@@ -1,0 +1,70 @@
+body {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #D9B596;
+  font-family: 'Arial', sans-serif;
+  color: white;
+}
+
+.contact-container {
+  margin: 50px auto;
+  max-width: 700px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.contact-header {
+  margin-bottom: 20px;
+}
+
+.contact-header h2 {
+  font-size: 2rem;
+  color: #F5DEB3;
+}
+
+.contact-header p {
+  font-size: 1.2rem;
+}
+
+.form-control {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #BF793B;
+  border-radius: 5px;
+  color: black;
+}
+
+.form-control:focus {
+  border-color: #8C593B;
+  box-shadow: 0 0 5px rgba(140, 89, 59, 0.5);
+}
+
+.btn-custom {
+  background-color: #BF793B;
+  color: white;
+  border-radius: 30px;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #BF8F73;
+  color: black;
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .contact-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .contact-header p {
+    font-size: 1rem;
+  }
+}
