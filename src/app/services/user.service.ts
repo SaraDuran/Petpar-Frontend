@@ -1,24 +1,25 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = 'http://localhost:8080'; // Substitua pelo URL da sua API
+  private baseUrl = 'http://localhost:8080/v1/user';
 
   constructor(private http: HttpClient) {}
 
-  // Metodo para registrar um usuário
-  registerUser(userData: any): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(this.apiUrl, userData, { headers });
+  registerUser(userData: { name: string; email: string; password: string }): Observable<any> {
+    return this.http.post(`${this.baseUrl}`, userData); // POST para o endpoint de cadastro
   }
 
-  // Metodo para autenticar um usuário
-  loginUser(credentials: any): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(`${this.apiUrl}/login`, credentials, { headers });
+  loginUser(credentials: { email: string; password: string }): Observable<any> {
+    return this.http.get(`${this.baseUrl}/login`, {
+      params: {
+        email: credentials.email,
+        password: credentials.password,
+      },
+    });
   }
 }
