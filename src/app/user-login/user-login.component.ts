@@ -1,26 +1,35 @@
 import { Component } from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {RouterLink} from '@angular/router';
-import {NgOptimizedImage} from '@angular/common';
+import { UserService } from '../services/user.service';
+import { FormsModule } from '@angular/forms'; // Importação do FormsModule
 
 @Component({
   selector: 'app-user-login',
   standalone: true,
+  imports: [FormsModule], // Adicionado FormsModule na lista de imports
   templateUrl: './user-login.component.html',
-  imports: [
-    FormsModule,
-    RouterLink,
-    NgOptimizedImage
-  ],
-  styleUrls: ['./user-login.component.css']
+  styleUrls: ['./user-login.component.css'],
 })
 export class UserLoginComponent {
   email: string = '';
   password: string = '';
 
+  constructor(private userService: UserService) {}
+
   onSubmit() {
-    console.log('Email:', this.email);
-    console.log('Password:', this.password);
-    // Adicione aqui a lógica para autenticação
+    const credentials = {
+      email: this.email,
+      password: this.password,
+    };
+
+    this.userService.loginUser(credentials).subscribe({
+      next: (response) => {
+        console.log('Login realizado com sucesso:', response);
+        alert('Login bem-sucedido!');
+      },
+      error: (err) => {
+        console.error('Erro no login:', err);
+        alert('Erro ao fazer login. Verifique os dados e tente novamente.');
+      },
+    });
   }
 }

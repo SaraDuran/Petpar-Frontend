@@ -21,26 +21,27 @@
   </div>
 </nav>
 
-<!-- Formulário de Login -->
+<!-- Login Form -->
 <div class="cadastro-container">
-  <form (submit)="onSubmit()">
-    <fieldset>
-      <legend>Login Adotante</legend>
+  <fieldset>
+    <legend>Login Instituição</legend>
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
       <div class="inputBox">
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required [(ngModel)]="email">
       </div>
+
       <div class="inputBox">
         <label for="password">Senha:</label>
         <input type="password" id="password" name="password" required [(ngModel)]="password">
       </div>
+
       <button type="submit">Entrar</button>
-    </fieldset>
-  </form>
+    </form>
+  </fieldset>
 
   <div class="text-center mt-3">
-    <p>Não tem conta? <a href="/user-register">Cadastre-se aqui!</a></p>
+    <p>Não tem conta? <a href="/institution-register">Cadastre-se aqui!</a></p>
     <p><a href="#">Esqueceu sua senha?</a></p>
   </div>
-
 </div>

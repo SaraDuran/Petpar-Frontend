@@ -21,26 +21,44 @@
   </div>
 </nav>
 
-<!-- Formulário de Login -->
+<!-- Formulário de Cadastro -->
 <div class="cadastro-container">
-  <form (submit)="onSubmit()">
+  <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
     <fieldset>
-      <legend>Login Adotante</legend>
+      <legend>Cadastro de Instituição</legend>
+
+      <div class="inputBox">
+        <label for="name">Nome da Instituição:</label>
+        <input type="text" id="name" name="name" required [(ngModel)]="name">
+      </div>
+
+      <div class="inputBox">
+        <label for="description">Descrição:</label>
+        <textarea id="description" name="description" rows="4" required [(ngModel)]="description"></textarea>
+      </div>
+
       <div class="inputBox">
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required [(ngModel)]="email">
       </div>
+
       <div class="inputBox">
         <label for="password">Senha:</label>
         <input type="password" id="password" name="password" required [(ngModel)]="password">
       </div>
-      <button type="submit">Entrar</button>
+
+      <div class="inputBox">
+        <label for="cpfCnpj">CPF ou CNPJ:</label>
+        <input type="text" id="cpfCnpj" name="cpfCnpj" required [(ngModel)]="cpfCnpj">
+      </div>
+
+      <div class="inputBox">
+        <label for="phoneNumber">Número de Telefone:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" required [(ngModel)]="phoneNumber">
+      </div>
+
+      <button type="submit">Cadastrar</button>
     </fieldset>
   </form>
-
-  <div class="text-center mt-3">
-    <p>Não tem conta? <a href="/user-register">Cadastre-se aqui!</a></p>
-    <p><a href="#">Esqueceu sua senha?</a></p>
-  </div>
-
+  <p class="text-white">Já tem uma conta? <a routerLink="/institution-login">Faça login</a></p>
 </div>
