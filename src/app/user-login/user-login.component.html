@@ -1,0 +1,44 @@
+<!-- Navbar -->
+<nav class="navbar" style="background-color: #cb8c63; box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4); padding: 10px;">
+  <div class="container-fluid d-flex align-items-center justify-content-between">
+    <a class="navbar-brand" routerLink="/">
+      <img alt="logo" ngSrc="assets/img/logoPetPar.png" style="max-width: 150px;">
+    </a>
+    <ul class="navbar-nav d-flex flex-row align-items-center" style="gap: 20px; list-style: none; margin: 0; padding: 0;">
+      <li class="nav-item">
+        <a routerLink="/" class="nav-link text-white">Início</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/user-login" class="nav-link text-white">Quero adotar</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/institution-login" class="nav-link text-white">Faça Parte</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/contato" class="nav-link text-white">Contato</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Formulário de Login -->
+<div class="cadastro-container">
+  <form (submit)="onSubmit()">
+    <fieldset>
+      <legend>Login Adotante</legend>
+      <div class="inputBox">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required [(ngModel)]="email">
+      </div>
+      <div class="inputBox">
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password" required [(ngModel)]="password">
+      </div>
+      <button type="submit">Entrar</button>
+    </fieldset>
+  </form>
+  <div class="text-center mt-3">
+    <p>Não tem conta? <a routerLink="/user-register">Cadastre-se aqui</a></p>
+    <p><a href="#">Esqueceu sua senha?</a></p>
+  </div>
+</div>
