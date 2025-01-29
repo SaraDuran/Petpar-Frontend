@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { UserService } from '../services/user.service';
 import { FormsModule } from '@angular/forms'; // Importação do FormsModule
+import { RouterLink } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-user-login',
   standalone: true,
-  imports: [FormsModule], // Adicionado FormsModule na lista de imports
+  imports: [FormsModule, RouterLink],
   templateUrl: './user-login.component.html',
   styleUrls: ['./user-login.component.css'],
 })

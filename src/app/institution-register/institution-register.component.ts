@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { InstitutionService } from '../services/institution.service';
 
 @Component({
   selector: 'app-institution-register',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './institution-register.component.html',
   styleUrls: ['./institution-register.component.css'],
 })

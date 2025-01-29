@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { ContactService } from '../services/contact.service';
 
 @Component({
   selector: 'app-contato',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './contato.component.html',
   styleUrls: ['./contato.component.css'],
 })
