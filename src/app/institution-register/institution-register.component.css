@@ -1,8 +1,11 @@
 body {
+  background-image: url('/assets/img/background.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-color: #402c21;
+  height: 100%;
+  width: 100%;
   font-family: 'Arial', sans-serif;
   color: white;
 }

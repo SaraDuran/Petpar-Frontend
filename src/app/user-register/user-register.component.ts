@@ -15,7 +15,6 @@ import { UserService } from '../services/user.service';
   ],
   styleUrls: ['./user-register.component.css']
 })
-
 export class UserRegisterComponent {
   // Propriedades para os dados do formulário
   name: string = '';
@@ -27,7 +26,6 @@ export class UserRegisterComponent {
   gender: string = '';
 
   constructor(private userService: UserService) {}
-
   onSubmit() {
     const userData = {
       name: this.name,

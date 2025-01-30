@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { InstitutionService } from '../services/institution.service';
-import {NgOptimizedImage} from "@angular/common";
-import {RouterLink, RouterLinkActive} from "@angular/router";
 
 @Component({
   selector: 'app-institution-login',
   standalone: true,
-    imports: [FormsModule, NgOptimizedImage, RouterLink, RouterLinkActive],
+  imports: [FormsModule, RouterLink],
   templateUrl: './institution-login.component.html',
   styleUrls: ['./institution-login.component.css'],
 })

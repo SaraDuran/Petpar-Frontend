@@ -5,7 +5,6 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { InstitutionLoginComponent } from './institution-login/institution-login.component';
 import { InstitutionRegisterComponent } from './institution-register/institution-register.component';
-/*
 import { AnimalInstitutionProfileComponent } from './animal-institution-profile/animal-institution-profile.component';
 import { AnimalInstitutionRegisterComponent } from './animal-institution-register/animal-institution-register.component';
 import { AnimalUserProfileComponent } from './animal-user-profile/animal-user-profile.component';
@@ -16,7 +15,6 @@ import { DonationUserRegisterComponent } from './donation-user-register/donation
 import { InstitutionAnimalListComponent } from './institution-animal-list/institution-animal-list.component';
 import { InstitutionAnimalRegisterComponent } from './institution-animal-register/institution-animal-register.component';
 import { UserAnimalListComponent } from './user-animal-list/user-animal-list.component';
-*/
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,7 +22,6 @@ export const routes: Routes = [
   { path: 'user-register', component: UserRegisterComponent },
   { path: 'institution-login', component: InstitutionLoginComponent },
   { path: 'institution-register', component: InstitutionRegisterComponent },
-  /*
   { path: 'animal-institution-profile', component: AnimalInstitutionProfileComponent },
   { path: 'animal-institution-register', component: AnimalInstitutionRegisterComponent },
   { path: 'animal-user-profile', component: AnimalUserProfileComponent },
@@ -34,5 +31,5 @@ export const routes: Routes = [
   { path: 'donation-user-register', component: DonationUserRegisterComponent },
   { path: 'institution-animal-list', component: InstitutionAnimalListComponent },
   { path: 'institution-animal-register', component: InstitutionAnimalRegisterComponent },
-  { path: 'user-animal-list', component: UserAnimalListComponent },*/
+  { path: 'user-animal-list', component: UserAnimalListComponent },
 ];
