@@ -9,7 +9,7 @@ import { environment } from 'environments/environment';
 })
 
 export class UserService {
-  private apiUrl = 'http://localhost:8080/v1/institution'; // Substitua pelo URL da sua API
+  private apiUrl = '${environment.apiUrl}/v1/user'; // Substitua pelo URL da sua API
 
   constructor(private http: HttpClient) {}
 
@@ -17,6 +17,7 @@ export class UserService {
   registerUser(userData: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(this.apiUrl, userData, { headers });
+
   }
 
   // Metodo para autenticar um usuário
@@ -24,4 +25,6 @@ export class UserService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(`${this.apiUrl}/login`, credentials, { headers });
   }
+
+
 }
