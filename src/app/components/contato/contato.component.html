@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fale Conosco</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg" style="box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4); padding: 10px; background-color: #cb8c63;">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img alt="logo" src="../../../assets/img/logoPetPar.png" class="logo" height="55" width="200">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto gap-3">
+        <li class="nav-item">
+          <a routerLink="/" class="nav-link" style="text-decoration: none; color: white;">Início</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/user-login" class="nav-link" style="text-decoration: none; color: white;">Quero adotar</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/institution-login" class="nav-link" style="text-decoration: none; color: white;">Faça Parte</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/contato" class="nav-link" style="text-decoration: none; color: white;">Contato</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Contact Form -->
+<div class="container contact-container">
+  <div class="contact-header text-center">
+    <h2>FALE CONOSCO</h2>
+    <p>Entre em contato com a equipe de desenvolvedores da PetPar</p>
+  </div>
+  <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+    <div class="mb-3">
+      <label for="name" class="form-label">Nome Completo</label>
+      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name" placeholder="Seu nome" required>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">E-mail</label>
+      <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" placeholder="seuemail@exemplo.com" required>
+    </div>
+    <div class="mb-3">
+      <label for="subject" class="form-label">Assunto</label>
+      <input type="text" class="form-control" id="subject" name="subject" [(ngModel)]="subject" placeholder="Assunto do contato" required>
+    </div>
+    <div class="mb-3">
+      <label for="message" class="form-label">Mensagem</label>
+      <textarea class="form-control" id="message" name="message" [(ngModel)]="message" rows="5" placeholder="Sua mensagem" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-custom btn-lg w-100">Enviar</button>
+  </form>
+</div>
+<br>
+<br>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
