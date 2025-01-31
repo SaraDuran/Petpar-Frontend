@@ -1,0 +1,81 @@
+body {
+	background-image: url('/assets/img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #402c21;
+    height: 100%;
+    width: 100%;
+    font-family: 'Arial', sans-serif;
+    color: white;
+}
+
+.cadastro-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+fieldset {
+    border: 2px solid #BF793B;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+legend {
+    color: #591202;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.inputBox {
+    margin-bottom: 15px;
+}
+
+label {
+    color: #d7a746ec;
+    font-weight: bold;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #BF793B;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #BF793B;
+    border: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #BF8F73;
+}
+
+p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+p a {
+    color: #591202;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
