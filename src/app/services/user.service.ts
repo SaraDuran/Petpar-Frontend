@@ -9,13 +9,14 @@ import { environment } from 'environments/environment';
 })
 
 export class UserService {
-  private apiUrl = '${environment.apiUrl}/v1/user'; // Substitua pelo URL da sua API
+  private apiUrl = 'http://localhost:8080/v1/user';
 
   constructor(private http: HttpClient) {}
 
   // Metodo para registrar um usuário
   registerUser(userData: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    //console.log("Aqui!!!")
     return this.http.post(this.apiUrl, userData, { headers });
 
   }

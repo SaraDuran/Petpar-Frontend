@@ -21,7 +21,7 @@ export interface Donation {
   providedIn: 'root'
 })
 export class DonationService {
-  private apiUrl = 'http://sua-api.com/api/donations';
+  private apiUrl = 'http://localhost:8080/v1/donation';
 
   constructor(private http: HttpClient) { }
 
