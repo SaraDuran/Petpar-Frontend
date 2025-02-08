@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import { Router } from '@angular/router'
 import {RouterLink} from '@angular/router';
 import {NgOptimizedImage} from '@angular/common';
 import { UserService } from '../../services/user.service';
@@ -27,7 +28,7 @@ export class UserRegisterComponent {
   //gender: string = ''
   gender: string | null = null;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   onSubmit() {
     const userData = {
@@ -45,6 +46,7 @@ export class UserRegisterComponent {
       next: (response) => {
         console.log('Usuário registrado com sucesso:', response);
         alert('Cadastro realizado com sucesso!');
+        this.router.navigateByUrl('/user-login');
       },
       error: (err) => {
         console.error('Erro ao registrar usuário:', err);

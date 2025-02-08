@@ -19,12 +19,7 @@ export class UserLoginComponent {
   constructor(private userService: UserService, private router: Router) {}
 
   onSubmit() {
-    const credentials = {
-      email: this.email,
-      password: this.password,
-    };
-
-    this.userService.loginUser(credentials).subscribe({
+    this.userService.loginUser(this.email, this.password).subscribe({
       next: (response) => {
         console.log('Login realizado com sucesso:', response);
         alert('Login bem-sucedido!');

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router'
 import { InstitutionService } from '../../services/institution.service';
 
 @Component({
@@ -14,18 +15,15 @@ export class InstitutionLoginComponent {
   email: string = '';
   password: string = '';
 
-  constructor(private institutionService: InstitutionService) {}
+  constructor(private institutionService: InstitutionService, private router: Router) {}
 
   onSubmit() {
-    const credentials = {
-      email: this.email,
-      password: this.password,
-    };
 
-    this.institutionService.loginInstitution(credentials).subscribe({
+    this.institutionService.loginInstitution(this.email, this.password).subscribe({
       next: (response) => {
         console.log('Login realizado com sucesso:', response);
         alert('Login bem-sucedido!');
+        this.router.navigateByUrl('/institution-animal-list');
       },
       error: (err) => {
         console.error('Erro ao fazer login:', err);

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router'
 import { RouterLink } from '@angular/router';
 import { InstitutionService } from '../../services/institution.service';
 import {NgOptimizedImage} from '@angular/common';
@@ -19,7 +20,7 @@ export class InstitutionRegisterComponent {
   cpfCnpj: string = '';
   phoneNumber: string = '';
 
-  constructor(private institutionService: InstitutionService) {}
+  constructor(private institutionService: InstitutionService, private router: Router) {}
 
   onSubmit() {
     const institutionData = {
@@ -35,6 +36,7 @@ export class InstitutionRegisterComponent {
       next: (response) => {
         console.log('Instituição registrada com sucesso:', response);
         alert('Cadastro realizado com sucesso!');
+        this.router.navigateByUrl('/institution-login');
       },
       error: (err) => {
         console.error('Erro ao registrar instituição:', err);

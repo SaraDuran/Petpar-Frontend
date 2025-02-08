@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'environments/environment';
 
@@ -12,15 +12,21 @@ export class InstitutionService {
   constructor(private http: HttpClient) {}
 
   registerInstitution(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/register`, data, {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
     });
+    console.log("InstitutionData: ", data)
+    return this.http.post(this.baseUrl, data, { headers });
   }
 
-  loginInstitution(credentials: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/login`, credentials, {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    });
+  loginInstitution(email: string, password: string): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    let params = new HttpParams()
+          .set('email', email)
+          .set('password', password);
+
+    return this.http.get(this.baseUrl,  { headers, params });
   }
 
 

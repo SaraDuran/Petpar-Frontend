@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'environments/environment';
 
@@ -9,6 +9,7 @@ import { environment } from 'environments/environment';
 })
 
 export class UserService {
+
   private apiUrl = 'http://localhost:8080/v1/user';
 
   constructor(private http: HttpClient) {}
@@ -25,10 +26,13 @@ export class UserService {
   }
 
   // Metodo para autenticar um usuário
-  loginUser(credentials: any): Observable<any> {
+  loginUser(email: string, password: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    console.log("Sending Credentials: ", credentials);
-    return this.http.post(`${this.apiUrl}`, credentials, { headers });
+    let params = new HttpParams()
+          .set('email', email)
+          .set('password', password);
+
+    return this.http.get(this.apiUrl,  { headers, params });
   }
 
 
