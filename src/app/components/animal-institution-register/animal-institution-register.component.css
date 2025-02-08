@@ -1,77 +1,60 @@
 body {
-	background-image: url('assets/img/background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #402c21;
-    font-family: 'Arial', sans-serif;
-    color: white;
+  background-image: url('/assets/img/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #402c21;
+  height: 100vh;
+  font-family: 'Arial', sans-serif;
+  color: white;
 }
-.list-container {
-    background-color: rgba(0, 0, 0, 0.4);
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.navbar {
+  margin-bottom: 20px;
 }
-.cadastro-container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color:rgba(0, 0, 0, 0.4);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+.card {
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
-fieldset {
-	background-color: rgba(0, 0, 0, 0.4);
-    border: 2px solid #BF793B;
-    border-radius: 10px;
-    padding: 20px;
+
+.bg-custom-header {
+  background-color: #BF793B;
 }
-legend {
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    font-size: 1.5rem;
+
+.bg-custom-body {
+  background-color: rgba(0, 0, 0, 0.4);
 }
-.inputBox {
-    margin-bottom: 15px;
+
+.list-group-item {
+  border: 1px solid #BF793B;
+  color: #8C593B;
+  font-weight: bold;
+  font-size: 1rem;
 }
-label {
- 	color: rgb(191, 121, 59);
-    font-weight: bold;
+
+.btn-custom {
+  background-color: #BF793B;
+  border: 25px;
+  border-radius: 25px;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #BF793B;
-    border-radius: 5px;
-    font-size: 1rem;
-    color: black;
+
+.btn-custom:hover {
+  background-color: #BF8F73;
 }
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #BF793B;
-    border: none;
-    border-radius: 25px;
-    color: #fff;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+
+
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
-button:hover {
-    background-color: #BF8F73;
-}
-p {
-    text-align: center;
-    margin-top: 20px;
-}
-p a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-p a:hover {
-    text-decoration: underline;
+
+form {
+  margin-top: 20px;
 }

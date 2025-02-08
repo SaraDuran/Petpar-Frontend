@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import {Router, RouterLink} from '@angular/router';
+import {Router, RouterLink, RouterLinkActive} from '@angular/router';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 
 @Component({
   selector: 'app-navbar-institution',
   standalone: true,
-  imports: [CommonModule, RouterLink, NgOptimizedImage],
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './navbar-institution.component.html',
   styleUrls: ['./navbar-institution.component.css']
 })

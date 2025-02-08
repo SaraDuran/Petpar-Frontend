@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg" style="background-color: #cb8c63; box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4); padding: 10px;">
   <div class="container-fluid">
-    <a class="navbar-brand d-flex align-items-center" >
+    <a class="navbar-brand d-flex align-items-center">
       <img alt="logo" ngSrc="assets/img/logoPetPar.png" class="logo" height="83" width="299">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,13 +9,19 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto gap-3">
         <li class="nav-item">
-          <a routerLink="/user-animal-list" class="nav-link" style="text-decoration: none; color: white;">Lista de Pets</a>
+          <a routerLink="/user-animal-list" routerLinkActive="active" class="nav-link" style="text-decoration: none; color: white;">
+            Lista de Pets
+          </a>
         </li>
         <li class="nav-item">
-          <a routerLink="/animal-user-profile" class="nav-link" style="text-decoration: none; color: white;">Andamento da adoção</a>
+          <a routerLink="/animal-user-profile" routerLinkActive="active" class="nav-link" style="text-decoration: none; color: white;">
+            Andamento da adoção
+          </a>
         </li>
         <li class="nav-item">
-          <a routerLink="/donation-user-list" class="nav-link" style="text-decoration: none; color: white;">Faça uma doação!</a>
+          <a routerLink="/donation-user-list" routerLinkActive="active" class="nav-link" style="text-decoration: none; color: white;">
+            Faça uma doação!
+          </a>
         </li>
         <li class="nav-item">
           <button (click)="logout()" class="nav-link" style="background: none; border: none; color: white; cursor: pointer;">
