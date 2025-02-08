@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { Donation, DonationService } from '../../services/donation.service';
+import {NavbarInstitutionComponent} from '../navbar-institution/navbar-institution.component';
 
 @Component({
   selector: 'app-donation-institution-list',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, NavbarInstitutionComponent],
   templateUrl: './donation-institution-list.component.html',
   styleUrls: ['./donation-institution-list.component.css']
 })
@@ -31,7 +32,7 @@ export class DonationInstitutionListComponent implements OnInit {
     this.errorMessage = null;
 
     const institutionId = this.authService.getCurrentInstitution()?.id;
-    
+
     if (!institutionId) {
       this.errorMessage = 'Instituição não autenticada';
       this.loading = false;

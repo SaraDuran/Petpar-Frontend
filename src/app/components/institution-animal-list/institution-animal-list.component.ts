@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AnimalService } from '../../services/animal.service';
+import {NavbarInstitutionComponent} from '../navbar-institution/navbar-institution.component';
 
 @Component({
   selector: 'app-institution-animal-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, NavbarInstitutionComponent],
   templateUrl: './institution-animal-list.component.html',
   styleUrls: ['./institution-animal-list.component.css']
 })

@@ -7,37 +7,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg" style="background-color: #cb8c63; box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4); padding: 10px;">
-        <div class="container-fluid">
-          <a class="navbar-brand d-flex align-items-center" href="#">
-            <img alt="logo" src="assets/img/logoPetPar.png" class="logo" height="55" width="200">
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto gap-3">
-              <li class="nav-item">
-                <a routerLink="/institution-animal-list" class="nav-link" style="text-decoration: none; color: white;">Lista de Pets</a>
-              </li>
-              <li class="nav-item">
-                <a routerLink="/institution-animal-register" class="nav-link" style="text-decoration: none; color: white;">Cadastro de Pets</a>
-              </li>
-              <li class="nav-item">
-                <a routerLink="/donation-institution-list" class="nav-link" style="text-decoration: none; color: white;">Lista de Doações</a>
-              </li>
-              <li class="nav-item">
-                <a routerLink="/logout" class="nav-link" style="text-decoration: none; color: white;">Logout</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+
+<app-navbar-institution></app-navbar-institution>
 
 <div class="container" style="margin: 0 auto; width: fit-content;">
     <div class="center col-lg-10 col-sm-12">
         <div class="col-12">
-            <h1 class="text-center">Instituições que você pode doar</h1>
+            <h1 class="text-center">Doações recebidas</h1>
         </div>
         <fieldset>
             <div *ngIf="institutionList && institutionList.length > 0">
@@ -65,13 +41,13 @@
                   </tr>
                 </table>
               </div>
-              
+
               <div *ngIf="donations && donations.length > 0">
                 <div *ngFor="let donation of donations; let i = index">
                   <!-- Exiba a doação -->
                 </div>
               </div>
-              
+
               <div *ngIf="!donations || donations.length === 0">
                 <p>Nenhuma doação encontrada.</p>
               </div>

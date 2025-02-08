@@ -3,7 +3,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { AnimalService } from '../../services/animal.service'; // Ajuste o caminho conforme a estrutura de sua aplicação
+import { AnimalService } from '../../services/animal.service';
+import {NavbarInstitutionComponent} from '../navbar-institution/navbar-institution.component'; // Ajuste o caminho conforme a estrutura de sua aplicação
 
 @Component({
   selector: 'app-institution-animal-register',
@@ -11,9 +12,9 @@ import { AnimalService } from '../../services/animal.service'; // Ajuste o camin
   templateUrl: './institution-animal-register.component.html',  // Coloque o caminho correto para o HTML
   imports: [
     FormsModule,
-    RouterLink,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    NavbarInstitutionComponent
   ],
   styleUrls: ['./institution-animal-register.component.css']  // Coloque o caminho correto para o CSS
 })
@@ -50,11 +51,11 @@ export class InstitutionAnimalRegisterComponent {
     };
 
     this.animalService.registerAnimal(animalData).subscribe({
-      next: (response: any) => {  
+      next: (response: any) => {
         console.log('Animal registrado com sucesso:', response);
         alert('Cadastro realizado com sucesso!');
       },
-      error: (err: any) => { 
+      error: (err: any) => {
         console.error('Erro ao registrar animal:', err);
         alert('Erro ao cadastrar. Tente novamente.');
       },
