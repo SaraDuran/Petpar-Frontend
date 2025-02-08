@@ -21,10 +21,11 @@ export class UserRegisterComponent {
   name: string = '';
   email: string = '';
   password: string = '';
-  dateOfBirth: string = '';
+  birthDate: string = '';
   cpf: string = '';
   phoneNumber: string = '';
-  gender: string = '';
+  //gender: string = ''
+  gender: string | null = null;
 
   constructor(private userService: UserService) {}
 
@@ -33,7 +34,8 @@ export class UserRegisterComponent {
       name: this.name,
       email: this.email,
       password: this.password,
-      dateOfBirth: this.dateOfBirth,
+      birthDate: this.birthDate || '2000-01-01', // Exemplo de data padrão
+      active: true,
       cpf: this.cpf,
       phoneNumber: this.phoneNumber,
       gender: this.gender,

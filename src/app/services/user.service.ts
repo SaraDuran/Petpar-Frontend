@@ -15,8 +15,11 @@ export class UserService {
 
   // Metodo para registrar um usuário
   registerUser(userData: any): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    //console.log("Aqui!!!")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    });
+    console.log("UserData: ", userData)
     return this.http.post(this.apiUrl, userData, { headers });
 
   }
@@ -24,7 +27,8 @@ export class UserService {
   // Metodo para autenticar um usuário
   loginUser(credentials: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(`${this.apiUrl}/login`, credentials, { headers });
+    console.log("Sending Credentials: ", credentials);
+    return this.http.post(`${this.apiUrl}`, credentials, { headers });
   }
 
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router'
 import { FormsModule } from '@angular/forms'; // Importação do FormsModule
 import { RouterLink } from '@angular/router';
 import { UserService } from '../../services/user.service';
@@ -15,7 +16,7 @@ export class UserLoginComponent {
   email: string = '';
   password: string = '';
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   onSubmit() {
     const credentials = {
@@ -27,6 +28,7 @@ export class UserLoginComponent {
       next: (response) => {
         console.log('Login realizado com sucesso:', response);
         alert('Login bem-sucedido!');
+        this.router.navigateByUrl('/user-animal-list');
       },
       error: (err) => {
         console.error('Erro no login:', err);

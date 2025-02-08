@@ -44,32 +44,32 @@
       <legend>Cadastro de Adotante</legend>
       <div class="inputBox">
         <label for="name">Nome:</label>
-        <input type="text" id="name" name="name" required ngModel>
+        <input type="text" id="name" name="name" required [(ngModel)]="name">
       </div>
       <div class="inputBox">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required ngModel>
+        <input type="email" id="email" name="email" required [(ngModel)]="email">
       </div>
       <div class="inputBox">
         <label for="password">Senha:</label>
-        <input type="password" id="password" name="password" required ngModel>
+        <input type="password" id="password" name="password" required [(ngModel)]="password">
       </div>
       <div class="inputBox">
-        <label for="dateOfBirth">Data de Nascimento:</label>
-        <input type="date" id="dateOfBirth" name="dateOfBirth" required ngModel>
+        <label for="birthDate">Data de Nascimento:</label>
+        <input type="date" id="birthDate" name="birthDate" required [(ngModel)]="birthDate">
       </div>
       <div class="inputBox">
         <label for="cpf">CPF:</label>
-        <input type="text" id="cpf" name="cpf" required ngModel>
+        <input type="text" id="cpf" name="cpf" required [(ngModel)]="cpf">
       </div>
       <div class="inputBox">
         <label for="phoneNumber">Número de Telefone:</label>
-        <input type="text" id="phoneNumber" name="phoneNumber" required ngModel>
+        <input type="text" id="phoneNumber" name="phoneNumber" required [(ngModel)]="phoneNumber">
       </div>
       <div class="inputBox">
         <label for="gender">Gênero:</label>
-        <select id="gender" name="gender" required ngModel>
-          <option value="" disabled selected>Selecione</option>
+        <select id="gender" name="gender" required [(ngModel)]="gender">
+          <option value="" disabled>Selecione</option>
           <option value="MASCULINO">Masculino</option>
           <option value="FEMININO">Feminino</option>
           <option value="OUTRO">Outro</option>
