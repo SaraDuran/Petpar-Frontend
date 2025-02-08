@@ -32,4 +32,5 @@ export const routes: Routes = [
   { path: 'institution-animal-list', component: InstitutionAnimalListComponent },
   { path: 'institution-animal-register', component: InstitutionAnimalRegisterComponent },
   { path: 'user-animal-list', component: UserAnimalListComponent },
+  { path: '**', redirectTo: '/login' }
 ];

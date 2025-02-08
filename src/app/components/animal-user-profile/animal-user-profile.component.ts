@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AnimalService } from '../../services/animal.service';
+import { NavbarComponent } from '../navbar-usuario/navbar.component';
 
 @Component({
   selector: 'app-animal-user-profile',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink], // Adicionei os módulos necessários
+  imports: [CommonModule, FormsModule, NavbarComponent],
   templateUrl: './animal-user-profile.component.html',
   styleUrls: ['./animal-user-profile.component.css']
 })
@@ -27,7 +28,7 @@ export class AnimalUserProfileComponent implements OnInit {
 
   private loadAnimal(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    
+
     if (!id) {
       this.errorMessage = 'ID do animal não encontrado na URL';
       this.isLoading = false;

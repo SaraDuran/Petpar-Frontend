@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { Donation, DonationService } from '../../services/donation.service';
+import { NavbarComponent } from '../navbar-usuario/navbar.component';
 
 @Component({
   selector: 'app-donation-user-list',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, NavbarComponent, RouterLink],
   templateUrl: './donation-user-list.component.html',
   styleUrls: ['./donation-user-list.component.css'],
 })
@@ -41,7 +42,7 @@ export class DonationUserListComponent implements OnInit {
   loadDonations(): void {
     this.loading = true;
     const userId = this.authService.getCurrentUser()?.id;
-    
+
     if (!userId) {
       this.errorMessage = 'Usuário não autenticado';
       return;
