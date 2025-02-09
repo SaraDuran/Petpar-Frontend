@@ -28,7 +28,7 @@ export class InstitutionRegisterComponent {
       description: this.description,
       email: this.email,
       password: this.password,
-      cpfCnpj: this.cpfCnpj,
+      cpfOrCnpj: this.cpfCnpj,
       phoneNumber: this.phoneNumber,
     };
 
