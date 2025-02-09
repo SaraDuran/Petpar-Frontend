@@ -41,20 +41,31 @@ export class UserAnimalListComponent implements OnInit {
 
 
   filterAnimals(): void {
-    this.filteredAnimals = this.animals.filter(animal => {
-      const matchesSpecies = this.filters.species
-        ? animal.species === this.filters.species
-        : true;
-      const matchesStartDate = this.filters.startDate
-        ? new Date(animal.birthDate) >= new Date(this.filters.startDate)
-        : true;
-      const matchesEndDate = this.filters.endDate
-        ? new Date(animal.birthDate) <= new Date(this.filters.endDate)
-        : true;
+    const params: any = {};
 
-      return matchesSpecies && matchesStartDate && matchesEndDate;
+    if (this.filters.species) {
+      params.species = this.filters.species.toUpperCase(); // Garante que está enviando corretamente
+    }
+    if (this.filters.startDate) {
+      params.startDate = this.filters.startDate;
+    }
+    if (this.filters.endDate) {
+      params.endDate = this.filters.endDate;
+    }
+
+    console.log("Enviando filtros:", params); // Log para verificar os valores
+
+    this.http.get<any[]>('http://localhost:8080/v1/animal/filter', { params }).subscribe({
+      next: (data: any[]) => {
+        this.filteredAnimals = data;
+      },
+      error: (err: any) => {
+        console.error('Erro ao filtrar animais:', err);
+      }
     });
   }
+
+
 
   requestAdoption(animalId: number): void {
     this.http.post(`http://localhost:8080/adoption`, { animalId }).subscribe({

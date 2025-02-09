@@ -52,7 +52,7 @@
         <table class="table table-responsive table-striped table-hover">
           <tr>
             <th>#</th>
-            <th>Espécie</th>
+            <th>Especie</th>
             <th>Nome</th>
             <th>Gênero</th>
             <th>Data de Nascimento</th>
@@ -61,10 +61,10 @@
           </tr>
           <tr *ngFor="let animal of filteredAnimals; let i = index">
             <td>{{ i + 1 }}</td>
-            <td>{{ animal.species }}</td>
+            <td>{{ animal.type }}</td>
             <td>{{ animal.name }}</td>
             <td>{{ animal.gender }}</td>
-            <td>{{ animal.birthDate | date:'dd/MM/yyyy' }}</td>
+            <td>{{ animal.birthDate | date:'yyyy/MM/dd' }}</td>
             <td>{{ animal.location }}</td>
             <td>
               <button class="btn btn-success" (click)="requestAdoption(animal.id)">Adotar</button>
