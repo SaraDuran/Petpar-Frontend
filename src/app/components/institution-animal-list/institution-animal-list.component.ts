@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http'; // Importar HttpClient
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AnimalService } from '../../services/animal.service';
 import {NavbarInstitutionComponent} from '../navbar-institution/navbar-institution.component';
 
@@ -21,26 +23,45 @@ export class InstitutionAnimalListComponent implements OnInit {
     startDate: '',
     endDate: ''
   };
+  institutionId: string = '';
 
-  constructor(private animalService: AnimalService) { }
+  constructor(private animalService: AnimalService, private http: HttpClient,private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit(): void {
+    this.institutionId = this.route.snapshot.params[`id`];
     this.loadAnimals();
   }
 
   loadAnimals(): void {
-    this.animalService.getAnimals().subscribe((data: any[]) => {
-      this.animals = data;
-      this.filteredAnimals = data;
+    this.http.get<any[]>('http://localhost:8080/v1/animal/all').subscribe({
+      next: (data: any[]) => {
+        console.log('Dados recebidos:', data);
+        this.animals = data;
+        this.filteredAnimals = data;
+      },
+      error: (err: any) => {
+        console.error('Erro ao carregar os animais:', err);
+      }
     });
   }
 
+
   filterAnimals(): void {
     this.filteredAnimals = this.animals.filter(animal => {
-      return (!this.filters.statusAdoption || animal.statusAdoption === this.filters.statusAdoption) &&
-             (!this.filters.species || animal.species === this.filters.species) &&
-             (!this.filters.startDate || new Date(animal.birthDate) >= new Date(this.filters.startDate)) &&
-             (!this.filters.endDate || new Date(animal.birthDate) <= new Date(this.filters.endDate));
+      const matchesSpecies = this.filters.species
+        ? animal.species === this.filters.species
+        : true;
+      const matchesStartDate = this.filters.startDate
+        ? new Date(animal.birthDate) >= new Date(this.filters.startDate)
+        : true;
+      const matchesEndDate = this.filters.endDate
+        ? new Date(animal.birthDate) <= new Date(this.filters.endDate)
+        : true;
+      const matchesInstitution = this.institutionId
+        ? animal.institutionId === this.institutionId
+        : true;
+
+      return matchesSpecies && matchesStartDate && matchesEndDate && matchesInstitution;
     });
   }
 

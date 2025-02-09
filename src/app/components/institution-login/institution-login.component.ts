@@ -23,7 +23,7 @@ export class InstitutionLoginComponent {
       next: (response) => {
         console.log('Login realizado com sucesso:', response);
         alert('Login bem-sucedido!');
-        this.router.navigateByUrl('/institution-animal-list');
+        this.router.navigate(['/institution-animal-list', response.id]);
       },
       error: (err) => {
         console.error('Erro ao fazer login:', err);
