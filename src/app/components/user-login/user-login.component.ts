@@ -23,7 +23,7 @@ export class UserLoginComponent {
       next: (response) => {
         console.log('Login realizado com sucesso:', response);
         alert('Login bem-sucedido!');
-        this.router.navigateByUrl('/user-animal-list', response.id);
+        this.router.navigate(['/user-animal-list', response.id]);
       },
       error: (err) => {
         console.error('Erro no login:', err);

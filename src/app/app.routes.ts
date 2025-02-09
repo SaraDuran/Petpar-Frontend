@@ -32,7 +32,7 @@ export const routes: Routes = [
   { path: 'donation-user-register', component: DonationUserRegisterComponent },
   { path: 'institution-animal-list/:id', component: InstitutionAnimalListComponent },
   { path: 'institution-animal-register', component: InstitutionAnimalRegisterComponent },
-  { path: 'user-animal-list', component: UserAnimalListComponent },
+  { path: 'user-animal-list/:id', component: UserAnimalListComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

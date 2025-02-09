@@ -73,12 +73,12 @@
           </tr>
           <tr *ngFor="let animal of filteredAnimals; let i = index">
             <td>{{ i + 1 }}</td>
-            <td>{{ animal.species }}</td>
+            <td>{{ animal.type }}</td>
             <td>{{ animal.name }}</td>
             <td>{{ animal.gender }}</td>
-            <td>{{ animal.birthDate | date:'dd/MM/yyyy' }}</td>
-            <td>{{ animal.adopter }}</td>
-            <td>{{ animal.institution }}</td>
+            <td>{{ animal.birth_date | date:'dd/MM/yyyy' }}</td>
+            <td>{{ animal.user_id }}</td>
+            <td>{{ animal.institution_id }}</td>
             <td>
               <button class="btn btn-warning" (click)="editAnimal(animal.id)">Editar</button>
               <button class="btn btn-danger" (click)="deleteAnimal(animal.id)">Deletar</button>
