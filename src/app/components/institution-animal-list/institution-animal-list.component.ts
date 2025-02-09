@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http'; // Importar HttpClient
+import { HttpClient, HttpParams } from '@angular/common/http'; // Importar HttpClient
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -23,17 +23,23 @@ export class InstitutionAnimalListComponent implements OnInit {
     startDate: '',
     endDate: ''
   };
-  institutionId: string = '';
+  institutionId: number = 0;
 
   constructor(private animalService: AnimalService, private http: HttpClient,private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit(): void {
+//     this.institutionId = Number(this.route.snapshot.paramMap.get('id'));
     this.institutionId = this.route.snapshot.params[`id`];
     this.loadAnimals();
   }
 
   loadAnimals(): void {
-    this.http.get<any[]>('http://localhost:8080/v1/animal/all').subscribe({
+  let params = new HttpParams()
+            //.set('institutionId', this.institutionId)
+            .set('pageNumber', 0)
+            .set('pageSize', 100);
+
+    this.http.get<any[]>(`http://localhost:8080/v1/animal-list/${this.institutionId}`, { params }).subscribe({
       next: (data: any[]) => {
         console.log('Dados recebidos:', data);
         this.animals = data;

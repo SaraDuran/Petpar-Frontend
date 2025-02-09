@@ -30,7 +30,7 @@ export const routes: Routes = [
   { path: 'donation-institution-list', component: DonationInstitutionListComponent },
   { path: 'donation-user-list', component: DonationUserListComponent },
   { path: 'donation-user-register', component: DonationUserRegisterComponent },
-  { path: 'institution-animal-list/:id?', component: InstitutionAnimalListComponent },
+  { path: 'institution-animal-list/:id', component: InstitutionAnimalListComponent },
   { path: 'institution-animal-register', component: InstitutionAnimalRegisterComponent },
   { path: 'user-animal-list', component: UserAnimalListComponent },
 ];
