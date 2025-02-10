@@ -107,6 +107,7 @@ export class AnimalInstitutionProfileComponent implements OnInit {
       next: (response: any) => {
         console.log('Animal registrado com sucesso:', response);
         alert('Cadastro realizado com sucesso!');
+        this.router.navigate(['/institution-animal-list', this.institutionId]);
       },
       error: (err: any) => {
         console.error('Erro ao registrar animal:', err);
