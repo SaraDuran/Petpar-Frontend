@@ -27,7 +27,7 @@ export class InstitutionAnimalRegisterComponent {
     institution_id: '' ,
     birthDate: '',
     gender: '',
-    statusAdoption: '',
+    status_adoption: 'PENDING_ADOPTION',
     description: '',
     name: ''
   };
@@ -56,6 +56,8 @@ export class InstitutionAnimalRegisterComponent {
       next: (response: any) => {
         console.log('Animal registrado com sucesso:', response);
         alert('Cadastro realizado com sucesso!');
+        this.router.navigate(['/institution-animal-list',  this.animal.institution_id]);
+
       },
       error: (err: any) => {
         console.error('Erro ao registrar animal:', err);
