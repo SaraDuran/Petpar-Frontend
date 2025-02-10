@@ -8,7 +8,7 @@ import {NavbarInstitutionComponent} from '../navbar-institution/navbar-instituti
 @Component({
   selector: 'app-donation-institution-list',
   standalone: true,
-  imports: [CommonModule, NavbarInstitutionComponent],
+  imports: [CommonModule, NavbarInstitutionComponent, RouterLink],
   templateUrl: './donation-institution-list.component.html',
   styleUrls: ['./donation-institution-list.component.css']
 })

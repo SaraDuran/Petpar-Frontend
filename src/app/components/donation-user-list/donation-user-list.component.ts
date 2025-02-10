@@ -1,32 +1,45 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { DonationService } from '../../services/donation.service';
+import {ActivatedRoute, RouterLink} from '@angular/router';
+import {Donation, DonationService} from '../../services/donation.service';
 import { NavbarComponent } from '../navbar-usuario/navbar.component';
 
 @Component({
   selector: 'app-donation-user-list',
   standalone: true,
-  imports: [CommonModule, RouterModule, NavbarComponent],
+  imports: [CommonModule, NavbarComponent, RouterLink],
   templateUrl: './donation-user-list.component.html',
   styleUrls: ['./donation-user-list.component.css'],
 })
 export class DonationUserListComponent implements OnInit {
+  donations: Donation[] = [];
   institutionList: any[] = [];
   loading = false;
   errorMessage: string | null = null;
+  institutionId!: number;
 
-  constructor(private donationService: DonationService) {}
+  constructor(
+    private donationService: DonationService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    this.institutionId = Number(this.route.snapshot.queryParamMap.get('institutionId'));
+
+    if (!this.institutionId) {
+      this.errorMessage = 'ID da instituição não encontrado!';
+      return;
+    }
+    console.log('ngOnInit executado');
     this.loadInstitutions();
   }
 
   loadInstitutions(): void {
     this.loading = true;
-    this.donationService.getAllInstitutions().subscribe({
+    this.donationService.getAllInstitutions(this.institutionId).subscribe({
       next: (data) => {
-        console.log('Instituições carregadas:', data); // 🔍 Verifique se os dados estão vindo
+        console.log('Dados recebidos do backend:', data);
+
         this.institutionList = data;
         this.loading = false;
       },

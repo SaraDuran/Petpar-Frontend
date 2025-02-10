@@ -41,7 +41,10 @@ export class DonationService {
     return this.http.patch<Donation>(`${this.apiUrl}/${id}/status`, { status });
   }
 
-  getAllInstitutions(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/list-institution`);
+  getAllInstitutions(institutionId: number): Observable<any> {
+    console.log('Chamando o endpoint com institutionId:', institutionId);
+    return this.http.get(`${this.apiUrl}/list-institution`, {
+      params: { institutionId: institutionId.toString() }
+    });
   }
 }
