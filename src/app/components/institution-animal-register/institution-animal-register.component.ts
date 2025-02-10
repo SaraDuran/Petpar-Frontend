@@ -3,27 +3,28 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AnimalService } from '../../services/animal.service';
-import {NavbarInstitutionComponent} from '../navbar-institution/navbar-institution.component'; // Ajuste o caminho conforme a estrutura de sua aplicação
+import {NavbarInstitutionComponent} from '../navbar-institution/navbar-institution.component';
 
 @Component({
   selector: 'app-institution-animal-register',
   standalone: true,
-  templateUrl: './institution-animal-register.component.html',  // Coloque o caminho correto para o HTML
+  templateUrl: './institution-animal-register.component.html',
   imports: [
     FormsModule,
     HttpClientModule,
     CommonModule,
     NavbarInstitutionComponent
   ],
-  styleUrls: ['./institution-animal-register.component.css']  // Coloque o caminho correto para o CSS
+  styleUrls: ['./institution-animal-register.component.css']
 })
 export class InstitutionAnimalRegisterComponent {
   animal = {
     type: '',
     id: '',
-    user: { id: '' },
-    institution: { id: '' },
+//     user: { id: '' },
+    institution_id: '' ,
     birthDate: '',
     gender: '',
     statusAdoption: '',
@@ -34,7 +35,7 @@ export class InstitutionAnimalRegisterComponent {
   photo: File | null = null;
   photoUrl: string | null = null;
 
-  constructor(private animalService: AnimalService) {}
+  constructor(private animalService: AnimalService,private route: ActivatedRoute,private router: Router) {}
 
   onFileChange(event: Event): void {
     const file = (event.target as HTMLInputElement).files?.[0];
@@ -45,12 +46,13 @@ export class InstitutionAnimalRegisterComponent {
   }
 
   onSubmit() {
+  this.animal.institution_id= this.route.snapshot.params[`id`];
     const animalData = {
       ...this.animal,
       photo: this.photo
     };
 
-    this.animalService.registerAnimal(animalData).subscribe({
+    this.animalService.registerAnimal(this.animal).subscribe({
       next: (response: any) => {
         console.log('Animal registrado com sucesso:', response);
         alert('Cadastro realizado com sucesso!');

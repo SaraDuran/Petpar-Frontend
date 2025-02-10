@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg" style="background-color: #cb8c63; box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4); padding: 10px;">
   <div class="container-fluid">
     <a class="navbar-brand d-flex align-items-center" routerLink="/">
-      <img alt="logo" src="assets/img/logoPetPar.png" class="logo" height="55" width="200">
+      <img alt="logo" ngSrc="assets/img/logoPetPar.png" class="logo" height="83" width="299">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -9,10 +9,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto gap-3">
         <li class="nav-item">
-          <a routerLink="['/institution-animal-list', id]" routerLinkActive="active" class="nav-link" style="text-decoration: none; color: white;">Lista de Pets</a>
+          <a  [routerLink]="['/institution-animal-list', id]" routerLinkActive="active" class="nav-link" style="text-decoration: none; color: white;">Lista de Pets</a><!--routerLink="/institution-animal-list/:id" -->
         </li>
         <li class="nav-item">
-          <a routerLink="['/institution-animal-register', id]" routerLinkActive="active" class="nav-link" style="text-decoration: none; color: white;">Cadastro de Pets</a>
+          <a [routerLink]="['/institution-animal-register', id]" routerLinkActive="active" class="nav-link" style="text-decoration: none; color: white;">Cadastro de Pets</a><!--routerLink="/institution-animal-register/:id"-->
         </li>
         <li class="nav-item">
           <a routerLink="/donation-institution-list" routerLinkActive="active" class="nav-link" style="text-decoration: none; color: white;">Lista de Doações</a>

@@ -31,7 +31,7 @@ export const routes: Routes = [
   { path: 'donation-user-list', component: DonationUserListComponent },
   { path: 'donation-user-register', component: DonationUserRegisterComponent },
   { path: 'institution-animal-list/:id', component: InstitutionAnimalListComponent },
-  { path: 'institution-animal-register', component: InstitutionAnimalRegisterComponent },
+  { path: 'institution-animal-register/:id', component: InstitutionAnimalRegisterComponent },
   { path: 'user-animal-list/:id', component: UserAnimalListComponent },
 ];
 @NgModule({

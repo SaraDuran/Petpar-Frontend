@@ -1,28 +1,30 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { AnimalService } from '../../services/animal.service';
+import {NgOptimizedImage} from '@angular/common';
+
 
 @Component({
   selector: 'app-animal-institution-register',
   templateUrl: './animal-institution-register.component.html',
   styleUrls: ['./animal-institution-register.component.css'],
-  imports: [RouterLink]
+  imports: [RouterLink, NgOptimizedImage]
 })
 export class AnimalInstitutionRegisterComponent {
   animalData: any = {
-    species: '',
+    type: '',
     name: '',
     gender: '',
     birthDate: '',
-    adopter: '',
-    institution: ''
+//     user_id: '',
+    institution_id: ''
   };
 
   constructor(private animalService: AnimalService,private route: ActivatedRoute, private router: Router) {}
 
   registerAnimal() {
-    this.animalData.institution= this.route.snapshot.params[`id`];
-    if (this.animalData.species && this.animalData.name && this.animalData.adopter) {
+
+    if (this.animalData.type && this.animalData.name) {
       this.animalService.registerAnimal(this.animalData).subscribe(
         (response) => {
           console.log('Animal registrado com sucesso!', response);
