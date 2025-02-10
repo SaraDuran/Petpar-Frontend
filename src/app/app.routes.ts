@@ -24,7 +24,7 @@ export const routes: Routes = [
   { path: 'institution-login', component: InstitutionLoginComponent },
   { path: 'institution-register', component: InstitutionRegisterComponent },
   { path: 'animal-institution-profile', component: AnimalInstitutionProfileComponent },
-  { path: 'animal-institution-register', component: AnimalInstitutionRegisterComponent },
+  { path: 'animal-institution-register/:id', component: AnimalInstitutionRegisterComponent },
   { path: 'animal-user-profile', component: AnimalUserProfileComponent },
   { path: 'contato', component: ContatoComponent },
   { path: 'donation-institution-list', component: DonationInstitutionListComponent },

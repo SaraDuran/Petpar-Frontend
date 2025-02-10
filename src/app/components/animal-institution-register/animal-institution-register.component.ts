@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { AnimalService } from '../../services/animal.service';
 
 @Component({
@@ -18,9 +18,10 @@ export class AnimalInstitutionRegisterComponent {
     institution: ''
   };
 
-  constructor(private animalService: AnimalService, private router: Router) {}
+  constructor(private animalService: AnimalService,private route: ActivatedRoute, private router: Router) {}
 
   registerAnimal() {
+    this.animalData.institution= this.route.snapshot.params[`id`];
     if (this.animalData.species && this.animalData.name && this.animalData.adopter) {
       this.animalService.registerAnimal(this.animalData).subscribe(
         (response) => {

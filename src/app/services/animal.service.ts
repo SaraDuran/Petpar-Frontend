@@ -12,7 +12,7 @@ export class AnimalService {
 
   registerAnimal(animalData: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(`${this.apiUrl}/register`, animalData, { headers });
+    return this.http.post(`${this.apiUrl}`, animalData, { headers });
   }
 
   getAnimal(id: string): Observable<any> {
