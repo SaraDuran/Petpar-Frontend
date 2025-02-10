@@ -9,12 +9,12 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto gap-3">
         <li class="nav-item">
-          <a routerLink="/user-animal-list" routerLinkActive="active" class="nav-link" style="text-decoration: none; color: white;">
+          <a [routerLink]="['/user-animal-list', id]" routerLinkActive="active" class="nav-link" style="text-decoration: none; color: white;">
             Lista de Pets
           </a>
         </li>
         <li class="nav-item">
-          <a routerLink="/animal-user-profile" routerLinkActive="active" class="nav-link" style="text-decoration: none; color: white;">
+          <a [routerLink]="['/animal-user-profile', id]" routerLinkActive="active" class="nav-link" style="text-decoration: none; color: white;">
             Andamento da adoção
           </a>
         </li>

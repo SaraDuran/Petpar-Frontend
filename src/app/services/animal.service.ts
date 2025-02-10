@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -43,6 +43,16 @@ export class AnimalService {
   }
 
   approveAdoption(animalId: number) {
-    return this.http.patch(`http://localhost:8080/v1/animals/${animalId}/approve`, {});
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    let params = new HttpParams()
+                  .set('animalId', animalId);
+    return this.http.put<any>(`http://localhost:8080/v1/adoption/approve`,null,  {headers, params});
   }
+
+  reproveAdoption(animalId: number) {
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      let params = new HttpParams()
+                    .set('animalId', animalId);
+      return this.http.put<any>(`http://localhost:8080/v1/adoption/reprove`, null,  {headers,params});
+    }
 }

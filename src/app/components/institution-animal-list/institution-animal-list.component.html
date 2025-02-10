@@ -85,6 +85,10 @@
               <button *ngIf="animal.user_id" class="btn btn-success" (click)="approveAdoption(animal.id)">
                 Aprovar
               </button>
+
+              <button *ngIf="animal.user_id" class="btn btn-success" (click)="reproveAdoption(animal.id)">
+                Reprovar
+              </button>
             </td>
           </tr>
         </table>

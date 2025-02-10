@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
+import { RouterLink, RouterLinkActive, ActivatedRoute} from '@angular/router';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 
 @Component({
@@ -10,8 +11,9 @@ import {CommonModule, NgOptimizedImage} from '@angular/common';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-
-  constructor(private router: Router) {}
+  id: number =0;
+  constructor(private router: Router,private route: ActivatedRoute) {
+  this.id = this.route.snapshot.params[`id`];}
 
   logout(): void {
     console.log('Logout chamado!');

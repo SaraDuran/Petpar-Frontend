@@ -85,7 +85,7 @@ export class InstitutionAnimalListComponent implements OnInit {
       this.animalService.approveAdoption(animalId).subscribe({
         next: () => {
           alert("Adoção aprovada com sucesso!");
-          this.filterAnimals(); 
+          this.loadAnimals();
         },
         error: (err) => {
           console.error("Erro ao aprovar adoção:", err);
@@ -94,4 +94,19 @@ export class InstitutionAnimalListComponent implements OnInit {
       });
     }
   }
+
+  reproveAdoption(animalId: number) {
+      if (confirm("Tem certeza que deseja aprovar esta adoção?")) {
+        this.animalService.reproveAdoption(animalId).subscribe({
+          next: () => {
+            alert("Adoção reprovada com sucesso!");
+            this.loadAnimals();
+          },
+          error: (err) => {
+            console.error("Erro ao reprovar adoção:", err);
+            alert("Erro ao reprovar adoção. Tente novamente.");
+          }
+        });
+      }
+    }
 }
