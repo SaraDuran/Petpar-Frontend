@@ -16,6 +16,7 @@ import { DonationUserRegisterComponent } from './components/donation-user-regist
 import { InstitutionAnimalListComponent } from './components/institution-animal-list/institution-animal-list.component';
 import { InstitutionAnimalRegisterComponent } from './components/institution-animal-register/institution-animal-register.component';
 import { UserAnimalListComponent } from './components/user-animal-list/user-animal-list.component';
+import { UserAnimalAdoptListComponent } from './components/user-animal-adopt-list/user-animal-adopt-list.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,6 +27,7 @@ export const routes: Routes = [
   { path: 'animal-institution-profile', component: AnimalInstitutionProfileComponent },
   { path: 'animal-institution-register/:id', component: AnimalInstitutionRegisterComponent },
   { path: 'animal-user-profile/:id', component: AnimalUserProfileComponent },
+  { path: 'user-animal-adopt-list/:id', component: UserAnimalAdoptListComponent },
   { path: 'contato', component: ContatoComponent },
   { path: 'donation-institution-list', component: DonationInstitutionListComponent },
   { path: 'donation-user-list', component: DonationUserListComponent },

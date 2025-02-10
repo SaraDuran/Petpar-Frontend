@@ -12,8 +12,10 @@ import {CommonModule, NgOptimizedImage} from '@angular/common';
 })
 export class NavbarComponent {
   id: number =0;
+
   constructor(private router: Router,private route: ActivatedRoute) {
-  this.id = this.route.snapshot.params[`id`];}
+  this.id = this.route.snapshot.params[`id`];
+  }
 
   logout(): void {
     console.log('Logout chamado!');
