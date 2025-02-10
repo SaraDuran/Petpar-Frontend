@@ -91,6 +91,7 @@ export class UserAnimalListComponent implements OnInit {
   this.http.put<any>(`http://localhost:8080/v1/adoption`,null, { params }).subscribe({
       next: () => {
         alert('Pedido de adoção enviado com sucesso!');
+        this.loadAnimals();
       },
       error: (err: any) => { // Tipagem explícita
         console.error('Erro ao enviar o pedido de adoção:', err);

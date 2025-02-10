@@ -28,7 +28,7 @@ export class AnimalInstitutionRegisterComponent {
       this.animalService.registerAnimal(this.animalData).subscribe(
         (response) => {
           console.log('Animal registrado com sucesso!', response);
-          this.router.navigate(['/animal-list']);
+          this.router.navigate(['/institution-animal-list', response.id]);
         },
         (error) => {
           console.error('Erro ao registrar animal', error);
