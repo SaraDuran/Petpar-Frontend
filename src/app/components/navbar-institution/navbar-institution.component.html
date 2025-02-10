@@ -15,7 +15,7 @@
           <a [routerLink]="['/institution-animal-register', id]" routerLinkActive="active" class="nav-link" style="text-decoration: none; color: white;">Cadastro de Pets</a><!--routerLink="/institution-animal-register/:id"-->
         </li>
         <li class="nav-item">
-          <a routerLink="/donation-institution-list" routerLinkActive="active" class="nav-link" style="text-decoration: none; color: white;">Lista de Doações</a>
+          <a [routerLink]="['/donation-institution-list', id]" routerLinkActive="active" class="nav-link" style="text-decoration: none; color: white;">Lista de Doações</a>
         </li>
         <li class="nav-item">
           <a (click)="logout()" class="nav-link" style="text-decoration: none; color: white; cursor: pointer;">Logout</a>
