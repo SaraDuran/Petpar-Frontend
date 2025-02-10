@@ -4,19 +4,19 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AnimalService } from '../../services/animal.service';
-import {NavbarInstitutionComponent} from '../navbar-institution/navbar-institution.component'; // Ajuste o caminho conforme a estrutura de sua aplicação
+import {NavbarInstitutionComponent} from '../navbar-institution/navbar-institution.component';
 
 @Component({
   selector: 'app-institution-animal-register',
   standalone: true,
-  templateUrl: './institution-animal-register.component.html',  // Coloque o caminho correto para o HTML
+  templateUrl: './institution-animal-register.component.html',
   imports: [
     FormsModule,
     HttpClientModule,
     CommonModule,
     NavbarInstitutionComponent
   ],
-  styleUrls: ['./institution-animal-register.component.css']  // Coloque o caminho correto para o CSS
+  styleUrls: ['./institution-animal-register.component.css']
 })
 export class InstitutionAnimalRegisterComponent {
   animal = {

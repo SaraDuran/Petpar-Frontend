@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AnimalService } from '../../services/animal.service';
+import {NgOptimizedImage} from '@angular/common';
+
 
 @Component({
   selector: 'app-animal-institution-register',
   templateUrl: './animal-institution-register.component.html',
   styleUrls: ['./animal-institution-register.component.css'],
-  imports: [RouterLink]
+  imports: [RouterLink, NgOptimizedImage]
 })
 export class AnimalInstitutionRegisterComponent {
   animalData: any = {
