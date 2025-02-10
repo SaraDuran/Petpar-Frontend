@@ -55,4 +55,8 @@ export class AnimalService {
                     .set('animalId', animalId);
       return this.http.put<any>(`http://localhost:8080/v1/adoption/reprove`, null,  {headers,params});
     }
+
+    //getAnimalById(animalId: number): Observable<any> {
+    //  return this.http.get<any>(`${this.apiUrl}/${animalId}`);
+    //}
 }

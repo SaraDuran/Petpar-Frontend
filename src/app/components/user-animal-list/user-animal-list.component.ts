@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient, HttpParams } from '@angular/common/http'; // Importar HttpClient
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HttpClient, HttpParams } from '@angular/common/http'; // Importar HttpClient
 import { NavbarComponent } from '../navbar-usuario/navbar.component';
 
 @Component({
@@ -98,4 +98,13 @@ export class UserAnimalListComponent implements OnInit {
       }
     });
   }
+
+  goToAnimalProfile(animalId: string): void {
+    if (animalId) {
+      this.router.navigate([`/animal-user-profile/${animalId}`]);
+    } else {
+      console.error("Erro: ID do animal não encontrado.");
+    }
+  }
+
 }

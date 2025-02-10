@@ -1,7 +1,6 @@
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterModule, Router } from '@angular/router';
-import { RouterLink, RouterLinkActive, ActivatedRoute} from '@angular/router';
-import {CommonModule, NgOptimizedImage} from '@angular/common';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',

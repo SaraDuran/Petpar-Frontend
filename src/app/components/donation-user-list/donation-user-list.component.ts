@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { Donation, DonationService } from '../../services/donation.service';
+import {ActivatedRoute, RouterLink} from '@angular/router';
+import {Donation, DonationService} from '../../services/donation.service';
 import { NavbarComponent } from '../navbar-usuario/navbar.component';
 
 @Component({
@@ -14,49 +13,34 @@ import { NavbarComponent } from '../navbar-usuario/navbar.component';
 })
 export class DonationUserListComponent implements OnInit {
   donations: Donation[] = [];
+  institutionList: any[] = [];
   loading = false;
   errorMessage: string | null = null;
-  institutionList: any[] = [];
+  institutionId!: number;
 
   constructor(
     private donationService: DonationService,
-    private authService: AuthService
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+
     this.loadInstitutions();
   }
 
   loadInstitutions(): void {
-    this.donationService.getInstitutionDonations('institutionId').subscribe({
+    this.loading = true;
+    this.donationService.getAllInstitutions().subscribe({
       next: (data) => {
+        console.log('Dados recebidos do backend:', data);
+
         this.institutionList = data;
+        this.loading = false;
       },
       error: (err) => {
         this.errorMessage = 'Erro ao carregar instituições';
         console.error(err);
-      }
-    });
-  }
-
-  loadDonations(): void {
-    this.loading = true;
-    const userId = this.authService.getCurrentUser()?.id;
-
-    if (!userId) {
-      this.errorMessage = 'Usuário não autenticado';
-      return;
-    }
-
-    this.donationService.getUserDonations(userId).subscribe({
-      next: (data) => {
-        this.donations = data;
         this.loading = false;
-      },
-      error: (err) => {
-        this.errorMessage = 'Erro ao carregar doações';
-        this.loading = false;
-        console.error(err);
       }
     });
   }

@@ -1,13 +1,14 @@
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { DonationService } from '../../services/donation.service';
+import {NavbarComponent} from '../navbar-usuario/navbar.component';
 
 @Component({
   selector: 'app-donation-user-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, NavbarComponent],
   templateUrl: './donation-user-register.component.html',
   styleUrls: ['./donation-user-register.component.css']
 })
@@ -36,10 +37,10 @@ export class DonationUserRegisterComponent {
 
   private setupPaymentValidation() {
     const creditCardFields = ['cardName', 'cardNumber', 'cardExpiry', 'cardCVV'];
-    
+
     this.donationForm.get('paymentMethod')?.valueChanges.subscribe(method => {
       this.showCreditCard = method === 'CARTAO';
-      
+
       creditCardFields.forEach(field => {
         const control = this.donationForm.get(field);
         if (method === 'CARTAO') {

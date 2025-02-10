@@ -67,6 +67,7 @@
             <td>{{ animal.birth_date | date:'dd/MM/yyyy' }}</td>
             <td>{{ animal.location }}</td>
             <td>
+              <button class="btn btn-info" (click)="goToAnimalProfile(animal.id)">Ver</button>
               <button class="btn btn-success" (click)="requestAdoption(animal.id)">Adotar</button>
             </td>
           </tr>

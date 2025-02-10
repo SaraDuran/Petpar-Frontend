@@ -40,4 +40,8 @@ export class DonationService {
   updateDonationStatus(id: string, status: 'confirmado' | 'recusado'): Observable<Donation> {
     return this.http.patch<Donation>(`${this.apiUrl}/${id}/status`, { status });
   }
+
+  getAllInstitutions(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/list-institution`);
+  }
 }

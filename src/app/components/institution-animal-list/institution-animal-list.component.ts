@@ -68,8 +68,16 @@ export class InstitutionAnimalListComponent implements OnInit {
     });
   }
 
-  editAnimal(id: string): void {
-    console.log('Editando animal com ID:', id);
+  editAnimal(animalId: string, id: string): void {
+    if (!animalId || !id) {
+      console.error("Erro: ID do animal ou da instituição está faltando.");
+      return;
+    }
+  
+    console.log(`Editando animal com ID: ${animalId}, Instituição: ${id}`);
+    this.router.navigate([`/animal-institution-profile`, id], {
+      queryParams: { animalId }
+    });
   }
 
   deleteAnimal(id: string): void {
@@ -85,7 +93,10 @@ export class InstitutionAnimalListComponent implements OnInit {
       this.animalService.approveAdoption(animalId).subscribe({
         next: () => {
           alert("Adoção aprovada com sucesso!");
-          this.loadAnimals();
+          const animalIndex = this.animals.findIndex(a => a.id === animalId);
+          if (animalIndex !== -1) {
+            this.animals[animalIndex].status = 'adotado';
+          }
         },
         error: (err) => {
           console.error("Erro ao aprovar adoção:", err);
@@ -96,7 +107,7 @@ export class InstitutionAnimalListComponent implements OnInit {
   }
 
   reproveAdoption(animalId: number) {
-      if (confirm("Tem certeza que deseja aprovar esta adoção?")) {
+      if (confirm("Tem certeza que deseja reprovar esta adoção?")) {
         this.animalService.reproveAdoption(animalId).subscribe({
           next: () => {
             alert("Adoção reprovada com sucesso!");
