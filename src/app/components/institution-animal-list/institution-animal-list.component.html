@@ -82,6 +82,9 @@
             <td>
               <button class="btn btn-warning" (click)="editAnimal(animal.id)">Editar</button>
               <button class="btn btn-danger" (click)="deleteAnimal(animal.id)">Deletar</button>
+              <button *ngIf="animal.user_id" class="btn btn-success" (click)="approveAdoption(animal.id)">
+                Aprovar
+              </button>
             </td>
           </tr>
         </table>

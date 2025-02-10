@@ -4,7 +4,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-color: #402c21;
-    height: 100vh;
+    height: 100%;
     font-family: 'Arial', sans-serif;
     color: white;
 }
@@ -52,7 +52,7 @@ input {
     color: black;
 }
 button {
-    width: 100%;
+    width: 120px;
     padding: 10px;
     background-color: #BF793B;
     border: none;

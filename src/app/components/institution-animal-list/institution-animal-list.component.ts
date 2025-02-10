@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http'; // Importar HttpClient
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AnimalService } from '../../services/animal.service';
-import {NavbarInstitutionComponent} from '../navbar-institution/navbar-institution.component';
+import { NavbarInstitutionComponent } from '../navbar-institution/navbar-institution.component';
 
 @Component({
   selector: 'app-institution-animal-list',
@@ -77,6 +76,21 @@ export class InstitutionAnimalListComponent implements OnInit {
     if (id) {
       this.animalService.deleteAnimal(id).subscribe(() => {
         this.loadAnimals();
+      });
+    }
+  }
+
+  approveAdoption(animalId: number) {
+    if (confirm("Tem certeza que deseja aprovar esta adoção?")) {
+      this.animalService.approveAdoption(animalId).subscribe({
+        next: () => {
+          alert("Adoção aprovada com sucesso!");
+          this.filterAnimals(); 
+        },
+        error: (err) => {
+          console.error("Erro ao aprovar adoção:", err);
+          alert("Erro ao aprovar adoção. Tente novamente.");
+        }
       });
     }
   }

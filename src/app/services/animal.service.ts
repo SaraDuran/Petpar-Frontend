@@ -41,4 +41,8 @@ export class AnimalService {
       status: 'PENDING'
     });
   }
+
+  approveAdoption(animalId: number) {
+    return this.http.patch(`http://localhost:8080/v1/animals/${animalId}/approve`, {});
+  }
 }
