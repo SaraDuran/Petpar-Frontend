@@ -28,14 +28,12 @@ export class InstitutionAnimalListComponent implements OnInit {
   constructor(private animalService: AnimalService, private http: HttpClient,private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit(): void {
-//     this.institutionId = Number(this.route.snapshot.paramMap.get('id'));
     this.institutionId = this.route.snapshot.params[`id`];
     this.loadAnimals();
   }
 
   loadAnimals(): void {
   let params = new HttpParams()
-            //.set('institutionId', this.institutionId)
             .set('pageNumber', 0)
             .set('pageSize', 100);
 
