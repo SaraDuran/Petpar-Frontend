@@ -1,9 +1,8 @@
+import { NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router'
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { InstitutionService } from '../../services/institution.service';
-import {NgOptimizedImage} from '@angular/common';
 
 @Component({
   selector: 'app-institution-register',
@@ -19,6 +18,7 @@ export class InstitutionRegisterComponent {
   password: string = '';
   cpfCnpj: string = '';
   phoneNumber: string = '';
+  active: boolean =true;
 
   constructor(private institutionService: InstitutionService, private router: Router) {}
 
@@ -30,6 +30,7 @@ export class InstitutionRegisterComponent {
       password: this.password,
       cpfOrCnpj: this.cpfCnpj,
       phoneNumber: this.phoneNumber,
+      active:true
     };
 
     this.institutionService.registerInstitution(institutionData).subscribe({

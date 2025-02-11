@@ -1,8 +1,8 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AnimalService } from '../../services/animal.service';
 import { NavbarInstitutionComponent } from '../navbar-institution/navbar-institution.component';
 
@@ -12,7 +12,6 @@ import { NavbarInstitutionComponent } from '../navbar-institution/navbar-institu
   templateUrl: './animal-institution-profile.component.html',
   imports: [
     FormsModule,
-    RouterLink,
     HttpClientModule,
     CommonModule,
     NavbarInstitutionComponent
@@ -38,6 +37,7 @@ export class AnimalInstitutionProfileComponent implements OnInit {
   photoUrl: string | null = null;
 
   constructor(
+    private location: Location,
     private animalService: AnimalService,
     private route: ActivatedRoute,
     private router: Router
@@ -89,6 +89,21 @@ export class AnimalInstitutionProfileComponent implements OnInit {
     });
   }
 
+  deleteAnimal(): void {
+    if (confirm("Tem certeza que deseja excluir este animal?")) {
+      this.animalService.deleteAnimal(this.animalId).subscribe({
+        next: () => {
+          alert("Animal excluído com sucesso!");
+          this.router.navigate([`/institution-animal-list`, this.institutionId]);
+        },
+        error: (err) => {
+          console.error("Erro ao excluir animal:", err);
+          alert("Erro ao excluir animal. Tente novamente.");
+        }
+      });
+    }
+  }
+
   onFileChange(event: Event): void {
     const file = (event.target as HTMLInputElement).files?.[0];
     if (file) {
@@ -106,13 +121,30 @@ export class AnimalInstitutionProfileComponent implements OnInit {
     this.animalService.registerAnimal(animalData).subscribe({
       next: (response: any) => {
         console.log('Animal registrado com sucesso:', response);
-        alert('Cadastro realizado com sucesso!');
+        alert('Editado com sucesso!');
         this.router.navigate(['/institution-animal-list', this.institutionId]);
       },
       error: (err: any) => {
-        console.error('Erro ao registrar animal:', err);
-        alert('Erro ao cadastrar. Tente novamente.');
+        console.error('Erro ao editar animal:', err);
+        alert('Erro ao editar. Tente novamente.');
       },
     });
   }
+
+  deleteAndSave(): void {
+    this.animalService.deleteAnimal(this.animalId).subscribe({
+      next: () => {
+        this.onSubmit(); 
+      },
+      error: (err) => {
+        console.error("Erro ao excluir o animal:", err);
+      }
+    });
+  }
+  
+
+  goBack(): void {
+    this.location.back();
+  }
+
 }

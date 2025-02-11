@@ -28,11 +28,11 @@
           <tr *ngFor="let institution of institutionList; let i = index">
             <td>{{ i + 1 }}</td>
             <td>{{ institution.name }}</td>
-            <td>{{ institution.cpfOrCnpj }}</td>
-            <td>{{ institution.phoneNumber }}</td>
+            <td>{{ institution.cpf_or_cnpj }}</td>
+            <td>{{ institution.phone_number }}</td>
             <td>{{ institution.email }}</td>
             <td>
-              <a class="btn btn-primary" [routerLink]="['/initDonation', institution.id]">
+              <a class="btn btn-primary" [routerLink]="['/donation-user-register', institution.id]">
                 <i class="fas fa-money-bill-wave"></i> Doar
               </a>
             </td>

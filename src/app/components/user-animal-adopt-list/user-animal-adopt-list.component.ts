@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpParams } from '@angular/common/http'; // Importar HttpClient
+import { HttpClient } from '@angular/common/http'; // Importar HttpClient
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -59,11 +59,11 @@ export class UserAnimalAdoptListComponent implements OnInit {
              const matchesAdoptionStatus = this.adoptionStatus
               ? animal.status_adoption === this.adoptionStatus
               : true;
-            const matchesUser = this.userId
-              ? animal.userId === this.userId
-              : true;
+            //const matchesUser = this.userId
+              //? animal.userId === this.userId
+             // : true;
 
-            return matchesAdoptionStatus && matchesUser;
+            return matchesAdoptionStatus /*&& matchesUser*/;
           });
           this.filteredAnimals = this.animals;
         },
