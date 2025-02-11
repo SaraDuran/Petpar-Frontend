@@ -68,14 +68,14 @@ export class InstitutionAnimalListComponent implements OnInit {
     });
   }
 
-  editAnimal(animalId: string, id: string): void {
-    if (!animalId || !id) {
+  editAnimal(animalId: string): void {
+    if (!animalId || !this.institutionId) {
       console.error("Erro: ID do animal ou da instituição está faltando.");
       return;
     }
-  
-    console.log(`Editando animal com ID: ${animalId}, Instituição: ${id}`);
-    this.router.navigate([`/animal-institution-profile`, id], {
+
+    console.log(`Editando animal com ID: ${animalId}, Instituição: ${this.institutionId}`);
+    this.router.navigate([`/animal-institution-profile`, this.institutionId], {
       queryParams: { animalId }
     });
   }

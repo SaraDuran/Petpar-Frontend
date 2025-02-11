@@ -11,8 +11,10 @@ import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/r
 })
 export class NavbarInstitutionComponent {
   id: number =0;
+//   animal: number =0;
   constructor(private router: Router,private route: ActivatedRoute) {
     this.id = this.route.snapshot.params[`id`];
+//     this.animal = this.route.snapshot.params[`animal`];
   }
 
   logout(): void {

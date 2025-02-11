@@ -84,7 +84,7 @@ export class AnimalInstitutionProfileComponent implements OnInit {
 
     console.log(`Editando animal com ID: ${animalId}, Instituição: ${institutionId}`);
 
-    this.router.navigate([`/animal-institution-profile/${institutionId}`], {
+    this.router.navigate([`/animal-institution-profile/${this.institutionId}`], {
       queryParams: { animalId }
     });
   }
