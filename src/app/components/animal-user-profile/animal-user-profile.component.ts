@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -13,11 +13,24 @@ import { NavbarComponent } from '../navbar-usuario/navbar.component';
   styleUrls: ['./animal-user-profile.component.css']
 })
 export class AnimalUserProfileComponent implements OnInit {
-  animal: any;
+  animal: any = {
+    id: '',
+    name: '',
+    type: '',
+    birthDate: '',
+    gender: '',
+    statusAdoption: '',
+    description: '',
+    institution: { id: '', name: '' },
+    user: { id: '', name: '' },
+    photoUrl: ''
+  };
+  
   isLoading: boolean = true;
-  errorMessage: string = ''; // Propriedade faltante
+  errorMessage: string = '';
 
   constructor(
+    private location: Location,
     private animalService: AnimalService,
     private route: ActivatedRoute
   ) { }
@@ -27,7 +40,7 @@ export class AnimalUserProfileComponent implements OnInit {
   }
 
   private loadAnimal(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id'); // Obtém o ID da URL
 
     if (!id) {
       this.errorMessage = 'ID do animal não encontrado na URL';
@@ -35,9 +48,9 @@ export class AnimalUserProfileComponent implements OnInit {
       return;
     }
 
-    this.animalService.getAnimals().subscribe({
+    this.animalService.getAnimal(id).subscribe({
       next: (data) => {
-        this.animal = data;
+        this.animal = data; // Define os dados do animal corretamente
         this.isLoading = false;
       },
       error: (err) => {
@@ -67,4 +80,9 @@ export class AnimalUserProfileComponent implements OnInit {
       }
     });
   }
+
+  goBack(): void {
+    this.location.back();
+  }
+
 }

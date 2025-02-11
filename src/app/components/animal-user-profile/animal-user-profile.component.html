@@ -34,17 +34,17 @@
                  class="img-fluid rounded"
                  alt="{{ animal.name }}">
           </div>
-          <div class="col-md-8">
+          <div class="col-md-8" id="divAnimal">
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
-                <strong>Espécie:</strong> {{ animal.species }}
+                <strong>Espécie:</strong> {{ animal.type }}
               </li>
               <li class="list-group-item">
                 <strong>Gênero:</strong> {{ animal.gender }}
               </li>
               <li class="list-group-item">
                 <strong>Data de Nascimento:</strong>
-                {{ animal.birthDate | date:'dd/MM/yyyy' }}
+                {{ animal.birth_date | date:'dd/MM/yyyy' }}
               </li>
               <li class="list-group-item">
                 <strong>Descrição:</strong> {{ animal.description }}
@@ -54,8 +54,8 @@
         </div>
       </div>
       <div class="card-footer text-center">
-        <button class="btn btn-success btn-lg" (click)="solicitarAdocao()">
-          Solicitar Adoção
+        <button type="button" class="btn btn-secondary" (click)="goBack()">
+          Voltar
         </button>
       </div>
     </div>
