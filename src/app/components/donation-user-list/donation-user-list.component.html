@@ -32,7 +32,7 @@
             <td>{{ institution.phone_number }}</td>
             <td>{{ institution.email }}</td>
             <td>
-              <a class="btn btn-primary" [routerLink]="['/donation-user-register', institution.id]">
+              <a class="btn btn-primary" (click)="doar(institution.id)">
                 <i class="fas fa-money-bill-wave"></i> Doar
               </a>
             </td>

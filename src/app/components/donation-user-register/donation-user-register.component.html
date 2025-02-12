@@ -21,11 +21,11 @@
           <label class="form-label">Escolha uma opção de pagamento</label>
           <div class="d-flex gap-3">
             <div class="form-check">
-              <input class="form-check-input" type="radio" formControlName="paymentMethod" value="CARTAO" id="cartaoCredito" (change)="showCreditCard = true">
+              <input class="form-check-input" type="radio" formControlName="payment_method" value="CARTAO" id="cartaoCredito" (change)="showCreditCard = true">
               <label class="form-check-label" for="cartaoCredito">Cartão de Crédito</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" formControlName="paymentMethod" value="PIX" id="qrCode" (change)="showCreditCard = false">
+              <input class="form-check-input" type="radio" formControlName="payment_method" value="PIX" id="qrCode" (change)="showCreditCard = false">
               <label class="form-check-label" for="qrCode">QR Code (Pix/Transferência)</label>
             </div>
           </div>

@@ -1,7 +1,7 @@
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { DonationService } from '../../services/donation.service';
 import {NavbarComponent} from '../navbar-usuario/navbar.component';
 
@@ -17,15 +17,27 @@ export class DonationUserRegisterComponent {
   loading = false;
   errorMessage: string | null = null;
   showCreditCard = true;
+  userId: number =0;
+  institutionId: number =0;
 
   constructor(
     private fb: FormBuilder,
     private donationService: DonationService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
+
+    this.route.params.subscribe(params => {
+      this.userId = params['id'];
+    });
+
+    this.route.queryParams.subscribe(queryParams => {
+      this.institutionId = queryParams['institutionId'];
+    });
+
     this.donationForm = this.fb.group({
       amount: ['', [Validators.required, Validators.min(0.01)]],
-      paymentMethod: ['CARTAO', Validators.required],
+      payment_method: ['CARTAO', Validators.required],
       cardName: [''],
       cardNumber: [''],
       cardExpiry: [''],
@@ -38,7 +50,7 @@ export class DonationUserRegisterComponent {
   private setupPaymentValidation() {
     const creditCardFields = ['cardName', 'cardNumber', 'cardExpiry', 'cardCVV'];
 
-    this.donationForm.get('paymentMethod')?.valueChanges.subscribe(method => {
+    this.donationForm.get('payment_method')?.valueChanges.subscribe(method => {
       this.showCreditCard = method === 'CARTAO';
 
       creditCardFields.forEach(field => {
@@ -70,10 +82,13 @@ export class DonationUserRegisterComponent {
       delete donationData.cardExpiry;
       delete donationData.cardCVV;
     }
+    donationData.institution_id = this.institutionId;
+    donationData.user_id = this.userId;
 
     this.donationService.createDonation(donationData).subscribe({
       next: () => {
-        this.router.navigate(['/doacoes/confirmacao']);
+        alert('Doação enviado com sucesso!');
+        this.router.navigate(['/donation-user-list', this.institutionId]);
         this.loading = false;
       },
       error: (err) => {

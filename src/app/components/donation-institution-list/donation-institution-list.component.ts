@@ -1,29 +1,29 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Donation, DonationService } from '../../services/donation.service';
 import {NavbarInstitutionComponent} from '../navbar-institution/navbar-institution.component';
 
 @Component({
   selector: 'app-donation-institution-list',
   standalone: true,
-  imports: [CommonModule, NavbarInstitutionComponent, RouterLink],
+  imports: [CommonModule, NavbarInstitutionComponent],
   templateUrl: './donation-institution-list.component.html',
   styleUrls: ['./donation-institution-list.component.css']
 })
 export class DonationInstitutionListComponent implements OnInit {
-  donations: Donation[] = [];
+  donations: any[] = [];
   loading = false;
   errorMessage: string | null = null;
-  institutionList: any[] = [];
+  institutionId: number = 0;
 
   constructor(
-    private donationService: DonationService,
-    private authService: AuthService
+    private donationService: DonationService,private route: ActivatedRoute,private router: Router
   ) {}
 
   ngOnInit(): void {
+    this.institutionId = this.route.snapshot.params[`id`];
     this.loadDonations();
   }
 
@@ -31,15 +31,15 @@ export class DonationInstitutionListComponent implements OnInit {
     this.loading = true;
     this.errorMessage = null;
 
-    const institutionId = this.authService.getCurrentInstitution()?.id;
+    //const institutionId = this.authService.getCurrentInstitution()?.id;
 
-    if (!institutionId) {
+    if (!this.institutionId) {
       this.errorMessage = 'Instituição não autenticada';
       this.loading = false;
       return;
     }
 
-    this.donationService.getInstitutionDonations(institutionId).subscribe({
+    this.donationService.getInstitutionDonations(this.institutionId).subscribe({
       next: (data) => {
         this.donations = data;
         this.loading = false;

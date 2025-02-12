@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, RouterLink} from '@angular/router';
+import { ActivatedRoute, RouterLink, Router} from '@angular/router';
 import {Donation, DonationService} from '../../services/donation.service';
 import { NavbarComponent } from '../navbar-usuario/navbar.component';
 
 @Component({
   selector: 'app-donation-user-list',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, RouterLink],
+  imports: [CommonModule, NavbarComponent],
   templateUrl: './donation-user-list.component.html',
   styleUrls: ['./donation-user-list.component.css'],
 })
@@ -16,15 +16,16 @@ export class DonationUserListComponent implements OnInit {
   institutionList: any[] = [];
   loading = false;
   errorMessage: string | null = null;
-  institutionId!: number;
+  userId!: number;
 
   constructor(
     private donationService: DonationService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-
+    this.userId = this.route.snapshot.params[`id`];
     this.loadInstitutions();
   }
 
@@ -44,4 +45,17 @@ export class DonationUserListComponent implements OnInit {
       }
     });
   }
+
+  doar(institutionId: number): void {
+//     if (!this.userId || !institutionId) {
+//       console.error("Erro: ID do animal ou da instituição está faltando.");
+//       return;
+//     }
+
+//     this.router.navigate([`/animal-institution-profile/${this.institutionId}`], {
+    this.router.navigate([`/donation-user-register`, this.userId], {
+      queryParams: { institutionId }
+    });
+  }
+
 }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -7,7 +7,9 @@ export type PaymentMethod = 'CARTAO' | 'PIX';
 export interface Donation {
   id: string;
   amount: number;
-  paymentMethod: PaymentMethod;
+  payment_method: PaymentMethod;
+  institution_id: number;
+  user_id: number;
   cardDetails?: {
     cardName: string;
     cardNumber: string;
@@ -25,16 +27,18 @@ export class DonationService {
 
   constructor(private http: HttpClient) { }
 
-  createDonation(donation: Partial<Donation>): Observable<Donation> {
-    return this.http.post<Donation>(this.apiUrl, donation);
+  createDonation(donation: any): Observable<Donation> {
+    return this.http.post<any>(this.apiUrl, donation, {});
   }
 
   getUserDonations(userId: string): Observable<Donation[]> {
     return this.http.get<Donation[]>(`${this.apiUrl}/user/${userId}`);
   }
 
-  getInstitutionDonations(institutionId: string): Observable<Donation[]> {
-    return this.http.get<Donation[]>(`${this.apiUrl}/institution/${institutionId}`);
+  getInstitutionDonations(institutionId: number): Observable<any[]> {
+  let params = new HttpParams()
+            .set('institutionId', institutionId);
+    return this.http.get<any[]>(`${this.apiUrl}/institution-donations`, {params});
   }
 
   updateDonationStatus(id: string, status: 'confirmado' | 'recusado'): Observable<Donation> {
