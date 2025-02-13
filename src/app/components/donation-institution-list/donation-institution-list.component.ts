@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Donation, DonationService } from '../../services/donation.service';
+import { UserService } from '../../services/user.service';
 import {NavbarInstitutionComponent} from '../navbar-institution/navbar-institution.component';
 
 @Component({
@@ -19,7 +20,7 @@ export class DonationInstitutionListComponent implements OnInit {
   institutionId: number = 0;
 
   constructor(
-    private donationService: DonationService,private route: ActivatedRoute,private router: Router
+    private donationService: DonationService,private userService: UserService,private route: ActivatedRoute,private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -41,7 +42,20 @@ export class DonationInstitutionListComponent implements OnInit {
 
     this.donationService.getInstitutionDonations(this.institutionId).subscribe({
       next: (data) => {
+//
+        this.donations = data.filter(donation => {
+          this.userService.getById(donation.user_id).subscribe({
+            next: (data) => {
+              donation.user_name = data.name;
+              console.log("Animal carregado com sucesso:", data);
+            },
+            error: (err) => {
+              console.error("Erro ao buscar animal:", err);
+            }
+          });
+        });
         this.donations = data;
+
         this.loading = false;
       },
       error: (err) => {

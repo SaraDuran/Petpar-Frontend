@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AnimalService } from '../../services/animal.service';
+import { UserService } from '../../services/user.service';
 import { NavbarInstitutionComponent } from '../navbar-institution/navbar-institution.component';
 
 @Component({
@@ -24,7 +25,7 @@ export class InstitutionAnimalListComponent implements OnInit {
   };
   institutionId: number = 0;
 
-  constructor(private animalService: AnimalService, private http: HttpClient,private route: ActivatedRoute,private router: Router) { }
+  constructor(private animalService: AnimalService,private userService: UserService, private http: HttpClient,private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit(): void {
     this.institutionId = this.route.snapshot.params[`id`];
@@ -39,7 +40,17 @@ export class InstitutionAnimalListComponent implements OnInit {
     this.http.get<any[]>(`http://localhost:8080/v1/animal-list/${this.institutionId}`, { params }).subscribe({
       next: (data: any[]) => {
         console.log('Dados recebidos:', data);
-        this.animals = data;
+        this.animals = data.filter(animal => {
+          this.userService.getById(animal.user_id).subscribe({
+            next: (data) => {
+              animal.user_name = data.name;
+              console.log("Animal carregado com sucesso:", data);
+            },
+            error: (err) => {
+              console.error("Erro ao buscar animal:", err);
+            }
+          });
+        });
         this.filteredAnimals = data;
       },
       error: (err: any) => {
@@ -63,6 +74,29 @@ export class InstitutionAnimalListComponent implements OnInit {
       const matchesInstitution = this.institutionId
         ? animal.institutionId === this.institutionId
         : true;
+      this.userService.getById(animal.user_id).subscribe({
+        next: (data) => {
+          animal.user_name = data.name;
+          console.log("Animal carregado com sucesso:", data);
+        },
+        error: (err) => {
+          console.error("Erro ao buscar animal:", err);
+        }
+      });
+//
+//         if(animal.user_id === null){
+//           userService.getById(animal.user_id).subscribe({
+//                 next: (data) => {
+//                   animal.user_name = data.name
+//                   console.log("Animal carregado com sucesso:", data);
+//                 },
+//                 error: (err) => {
+//                   animal.user_name = animal.user_id;
+//                 }
+//               });
+//         }
+
+
 
       return matchesSpecies && matchesStartDate && matchesEndDate && matchesInstitution;
     });
