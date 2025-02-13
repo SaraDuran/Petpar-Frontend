@@ -8,7 +8,7 @@ body {
     font-family: 'Arial', sans-serif;
     color: white;
   }
-  
+
 .list-container {
     background-color: rgba(0, 0, 0, 0.4);
     max-width: 800px;
@@ -76,4 +76,47 @@ p a {
 }
 p a:hover {
     text-decoration: underline;
+}
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.table {
+  width: 100%;
+  table-layout: auto; /* Permite que as colunas se ajustem ao conteúdo */
+}
+
+th, td {
+  text-align: center;
+  padding: 10px;
+  word-wrap: break-word; /* Permite que os textos longos quebrem corretamente */
+  white-space: normal; /* Impede que o texto fique truncado */
+  overflow: visible; /* Garante que o conteúdo apareça corretamente */
+}
+
+.email-column {
+  max-width: 250px; /* Ajuste conforme necessário */
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.table-responsive {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Estilização do botão */
+.btn-donation {
+  background-color: #BF793B !important;
+  border: none;
+  color: white !important;
+}
+
+.btn-donation:hover {
+  background-color: #8C593B !important;
 }
