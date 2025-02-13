@@ -27,6 +27,7 @@ export class AnimalInstitutionProfileComponent implements OnInit {
     birthDate: '',
     gender: '',
     statusAdoption: '',
+    photo_url: '',
     description: '',
     name: ''
   };
@@ -113,12 +114,12 @@ export class AnimalInstitutionProfileComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const animalData = {
-      ...this.animal,
-      photo: this.photo
-    };
+//     const animalData = {
+//       ...this.animal,
+//       photo: this.photo
+//     };
 
-    this.animalService.registerAnimal(animalData).subscribe({
+    this.animalService.registerAnimal(this.animal).subscribe({
       next: (response: any) => {
         console.log('Animal registrado com sucesso:', response);
         alert('Editado com sucesso!');
@@ -134,14 +135,14 @@ export class AnimalInstitutionProfileComponent implements OnInit {
   deleteAndSave(): void {
     this.animalService.deleteAnimal(this.animalId).subscribe({
       next: () => {
-        this.onSubmit(); 
+        this.onSubmit();
       },
       error: (err) => {
         console.error("Erro ao excluir o animal:", err);
       }
     });
   }
-  
+
 
   goBack(): void {
     this.location.back();

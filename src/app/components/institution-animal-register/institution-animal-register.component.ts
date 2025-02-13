@@ -27,11 +27,12 @@ export class InstitutionAnimalRegisterComponent {
     gender: '',
     status_adoption: 'PENDING_ADOPTION',
     description: '',
-    name: ''
+    name: '',
+    photo_url: ''
   };
 
   photo: File | null = null;
-  photoUrl: string | null = null;
+  photoUrl: string = "";
 
   constructor(private animalService: AnimalService, private route: ActivatedRoute, private router: Router) {}
 
@@ -45,21 +46,22 @@ export class InstitutionAnimalRegisterComponent {
 
   onSubmit() {
     this.animal.institution_id = this.route.snapshot.params['id'];
+    this.animal.photo_url = this.photoUrl;
 
-    const formData = new FormData();
-    formData.append('name', this.animal.name);
-    formData.append('description', this.animal.description);
-    formData.append('birthDate', this.animal.birthDate);
-    formData.append('type', this.animal.type);
-    formData.append('gender', this.animal.gender);
-    formData.append('status_adoption', this.animal.status_adoption);
-    formData.append('institution_id', this.animal.institution_id);
-    
-    if (this.photo) {
-      formData.append('photo', this.photo);
-    }
+//     const formData = new FormData();
+//     formData.append('name', this.animal.name);
+//     formData.append('description', this.animal.description);
+//     formData.append('birthDate', this.animal.birthDate);
+//     formData.append('type', this.animal.type);
+//     formData.append('gender', this.animal.gender);
+//     formData.append('status_adoption', this.animal.status_adoption);
+//     formData.append('institution_id', this.animal.institution_id);
+//
+//     if (this.photo) {
+//       formData.append('photo_url', this.photoUrl);
+//     }
 
-    this.animalService.registerAnimal(formData).subscribe({
+    this.animalService.registerAnimal(this.animal).subscribe({
       next: (response: any) => {
         console.log('Animal registrado com sucesso:', response);
         alert('Cadastro realizado com sucesso!');

@@ -13,6 +13,11 @@
     <form (ngSubmit)="onSubmit()">
         <fieldset>
             <legend style="color: white;">Perfil do Animal - Instituição</legend>
+          <div class="col-md-4">
+            <img [src]="animal.photo_url || 'assets/img/default-pet.png'"
+                 class="img-fluid rounded"
+                 alt="{{ animal.photo_url }}">
+          </div>
             <div class="inputBox">
                 <label for="name">Nome do Animal:</label>
                 <input type="text" id="name" name="name" [(ngModel)]="animal.name" required>
