@@ -23,6 +23,7 @@
     "jquery": "^3.7.1",
     "ngx-slick-carousel": "^19.0.0",
     "ngx-toastr": "^19.0.0",
+    "petpar": "file:",
     "rxjs": "~7.8.0",
     "slick-carousel": "^1.8.1",
     "tslib": "^2.3.0",

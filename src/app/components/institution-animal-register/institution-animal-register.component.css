@@ -4,7 +4,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-color: #402c21;
-  height: 100vh;
+  height: 100%;
   font-family: 'Arial', sans-serif;
   color: white;
 }
@@ -49,7 +49,7 @@ input {
   border: 1px solid #BF793B;
   border-radius: 5px;
   font-size: 1rem;
-  color: black;
+  color: rgb(96, 76, 6);
 }
 button {
   width: 100%;
