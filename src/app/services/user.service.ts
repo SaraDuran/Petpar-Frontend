@@ -25,6 +25,8 @@ export class UserService {
 
   }
 
+
+
   // Metodo para autenticar um usuário
   loginUser(email: string, password: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -34,6 +36,12 @@ export class UserService {
 
     return this.http.get(this.apiUrl,  { headers, params });
   }
+
+
+  getById(id: number): Observable<any> {
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      return this.http.get(`${this.apiUrl}/${id}`, {headers});
+    }
 
 
 }

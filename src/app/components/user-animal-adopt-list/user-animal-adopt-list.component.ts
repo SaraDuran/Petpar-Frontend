@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AnimalService } from '../../services/animal.service';
+import { InstitutionService } from '../../services/institution.service';
 import { NavbarComponent } from '../navbar-usuario/navbar.component';
 
 @Component({
@@ -25,7 +26,7 @@ export class UserAnimalAdoptListComponent implements OnInit {
   userId: number = 0;
   adoptionStatus = 'IN_PROGRESS';
 
-  constructor(private animalService: AnimalService, private http: HttpClient,private route: ActivatedRoute,private router: Router) { }
+  constructor(private animalService: AnimalService, private institutionService: InstitutionService, private http: HttpClient,private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.params[`id`];
@@ -62,7 +63,15 @@ export class UserAnimalAdoptListComponent implements OnInit {
             //const matchesUser = this.userId
               //? animal.userId === this.userId
              // : true;
-
+              this.institutionService.getById(animal.institution_id).subscribe({
+                next: (data) => {
+                  animal.institution_name = data.name;
+                  console.log("Animal carregado com sucesso:", data);
+                },
+                error: (err) => {
+                  console.error("Erro ao buscar animal:", err);
+                }
+              });
             return matchesAdoptionStatus /*&& matchesUser*/;
           });
           this.filteredAnimals = this.animals;

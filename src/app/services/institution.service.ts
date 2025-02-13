@@ -28,6 +28,11 @@ export class InstitutionService {
 
     return this.http.get(this.baseUrl,  { headers, params });
   }
+  
+  getById(id: number): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get(`${this.baseUrl}/${id}`, {headers});
+  }
 
 
 }
