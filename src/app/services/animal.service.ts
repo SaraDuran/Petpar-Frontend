@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -11,8 +11,9 @@ export class AnimalService {
   constructor(private http: HttpClient) {}
 
   registerAnimal(animalData: any): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(`${this.apiUrl}`, animalData, { headers });
+    return this.http.post(`${this.apiUrl}`, animalData, {
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 
   getAnimal(id: string): Observable<any> {
@@ -20,7 +21,7 @@ export class AnimalService {
   }
 
   getAnimals(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+    return this.http.get<any[]>(`${this.apiUrl}/all`); // Corrigido para buscar todos os animais corretamente
   }
 
   deleteAnimal(id: string): Observable<any> {
@@ -28,35 +29,33 @@ export class AnimalService {
   }
 
   solicitarAdocao(id: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/${id}/adocao`, {});
+    return this.http.post(`${this.apiUrl}/${id}/adoption`, {}); // Corrigido o endpoint
   }
 
   getAvailableAnimals(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/animals/available`);
+    return this.http.get<any[]>(`${this.apiUrl}/available`);
   }
 
   requestAdoption(animalId: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/adoptions`, {
       animalId,
-      status: 'PENDING'
+      status: 'PENDING',
     });
   }
 
-  approveAdoption(animalId: number) {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    let params = new HttpParams()
-                  .set('animalId', animalId);
-    return this.http.put<any>(`http://localhost:8080/v1/adoption/approve`,null,  {headers, params});
+  approveAdoption(animalId: number): Observable<any> {
+    return this.http.put(`http://localhost:8080/v1/adoption/approve`, {
+      animalId,
+    }, {
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 
-  reproveAdoption(animalId: number) {
-      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-      let params = new HttpParams()
-                    .set('animalId', animalId);
-      return this.http.put<any>(`http://localhost:8080/v1/adoption/reprove`, null,  {headers,params});
-    }
-
-    //getAnimalById(animalId: number): Observable<any> {
-    //  return this.http.get<any>(`${this.apiUrl}/${animalId}`);
-    //}
+  reproveAdoption(animalId: number): Observable<any> {
+    return this.http.put(`http://localhost:8080/v1/adoption/reprove`, {
+      animalId,
+    }, {
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
 }

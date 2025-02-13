@@ -12,12 +12,15 @@
 <div class="cadastro-container" style="background-color: rgba(0, 0, 0, 0.7);">
     <form (ngSubmit)="onSubmit()">
         <fieldset>
-            <legend style="color: white;">Perfil do Animal - Instituição</legend>
-          <div class="col-md-4">
-            <img [src]="animal.photo_url || 'assets/img/default-pet.png'"
-                 class="img-fluid rounded"
-                 alt="{{ animal.photo_url }}">
-          </div>
+            <legend style="color: white; text-align: center;">Perfil do Animal - Instituição</legend>
+            <div class="row justify-content-center">
+                <div class="col-md-4 text-center"> 
+                  <img [src]="animal.photo_url || 'assets/img/default-pet.png'"
+                       class="img-fluid rounded"
+                       alt="{{ animal.photo_url }}"
+                       style="max-height: 200px;">
+                </div>
+            </div>
             <div class="inputBox">
                 <label for="name">Nome do Animal:</label>
                 <input type="text" id="name" name="name" [(ngModel)]="animal.name" required>

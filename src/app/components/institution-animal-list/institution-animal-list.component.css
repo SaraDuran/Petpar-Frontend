@@ -62,6 +62,12 @@ button {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
+.btn-primary {
+    background-color: #BF793B;
+    color: white;
+}
+
 button:hover {
     background-color: #BF8F73;
 }

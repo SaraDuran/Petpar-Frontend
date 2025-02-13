@@ -80,8 +80,8 @@
             <td>{{ animal.user_name }}</td>
             <td>{{ animal.institution_id }}</td>
             <td>
-              <button class="btn btn-warning" (click)="editAnimal(animal.id)">Editar</button>
-              <button class="btn btn-danger" (click)="deleteAnimal(animal.id)">Deletar</button>
+              <button class="btn btn-primary" (click)="editAnimal(animal.id)">Editar</button>
+              <button class="btn btn-primary" (click)="deleteAnimal(animal.id)">Deletar</button>
               <button *ngIf="animal.user_id" class="btn btn-success" (click)="approveAdoption(animal.id)">
                 Aprovar
               </button>

@@ -1,9 +1,9 @@
-import {CommonModule, NgOptimizedImage} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterLink, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DonationService } from '../../services/donation.service';
-import {NavbarComponent} from '../navbar-usuario/navbar.component';
+import { NavbarComponent } from '../navbar-usuario/navbar.component';
 
 @Component({
   selector: 'app-donation-user-register',
