@@ -127,10 +127,7 @@ export class InstitutionAnimalListComponent implements OnInit {
       this.animalService.approveAdoption(animalId).subscribe({
         next: () => {
           alert("Adoção aprovada com sucesso!");
-          const animalIndex = this.animals.findIndex(a => a.id === animalId);
-          if (animalIndex !== -1) {
-            this.animals[animalIndex].status = 'adotado';
-          }
+          this.loadAnimals(); // Atualiza a lista de animais após aprovação
         },
         error: (err) => {
           console.error("Erro ao aprovar adoção:", err);

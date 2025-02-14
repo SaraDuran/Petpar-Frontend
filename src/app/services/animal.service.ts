@@ -44,17 +44,14 @@ export class AnimalService {
   }
 
   approveAdoption(animalId: number): Observable<any> {
-    return this.http.put(`http://localhost:8080/v1/adoption/approve`, {
-      animalId,
-    }, {
+    return this.http.put(`http://localhost:8080/v1/adoption/approve?animalId=${animalId}`, {}, {
       headers: { 'Content-Type': 'application/json' },
     });
   }
+  
 
   reproveAdoption(animalId: number): Observable<any> {
-    return this.http.put(`http://localhost:8080/v1/adoption/reprove`, {
-      animalId,
-    }, {
+    return this.http.put(`http://localhost:8080/v1/adoption/reprove?animalId=${animalId}`, {}, {
       headers: { 'Content-Type': 'application/json' },
     });
   }

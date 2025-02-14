@@ -69,7 +69,7 @@
 <!--            <td>{{ animal.user_id }}</td>-->
             <td>{{ animal.institution_name }}</td>
             <td>
-              <button *ngIf="animal.user_id" class="btn btn-primary" (click)="reproveAdoption(animal.id)">
+              <button *ngIf="animal.user_id && animal.status_adoption !== 'DONE'" class="btn btn-primary" (click)="reproveAdoption(animal.id)">
                 Parar Adoção
               </button>
             </td>

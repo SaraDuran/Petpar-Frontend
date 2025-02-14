@@ -10,18 +10,15 @@ describe('UserAnimalAdoptListComponent', () => {
   let animalService: jasmine.SpyObj<AnimalService>;
 
   beforeEach(async () => {
-    const animalServiceSpy = jasmine.createSpyObj('AnimalService', ['getAnimal', 'getAnimals', 'deleteAnimal']);
+    const animalServiceSpy = jasmine.createSpyObj('AnimalService', ['getAnimals', 'reproveAdoption']);
 
     await TestBed.configureTestingModule({
-      declarations: [InstitutionAnimalListComponent],
+      declarations: [UserAnimalAdoptListComponent],
       imports: [FormsModule],
-      providers: [
-        { provide: AnimalService, useValue: animalServiceSpy }
-      ]
-    })
-      .compileComponents();
+      providers: [{ provide: AnimalService, useValue: animalServiceSpy }]
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(InstitutionAnimalListComponent);
+    fixture = TestBed.createComponent(UserAnimalAdoptListComponent);
     component = fixture.componentInstance;
     animalService = TestBed.inject(AnimalService) as jasmine.SpyObj<AnimalService>;
   });
@@ -32,12 +29,10 @@ describe('UserAnimalAdoptListComponent', () => {
 
   it('should load animals on init', () => {
     const mockAnimals = [
-      { id: '1', species: 'Cachorro', name: 'Rex', gender: 'M', birthDate: '2020-01-01', adopter: 'João', institution: 'PetPar' }
+      { id: '1', species: 'CACHORRO', name: 'Rex', gender: 'M', birthDate: '2020-01-01', institution_id: 1, status_adoption: 'IN_PROGRESS' }
     ];
 
-    // Caso tenha o método getAnimals, use-o
-    animalService.getAnimals.and.returnValue(of(mockAnimals));  // Caso você tenha implementado o método getAnimals
-    // Se não, use getAnimal e altere a lógica para obter um animal com um id específico.
+    animalService.getAnimals.and.returnValue(of(mockAnimals));
     component.ngOnInit();
     fixture.detectChanges();
 
@@ -45,17 +40,12 @@ describe('UserAnimalAdoptListComponent', () => {
     expect(component.filteredAnimals).toEqual(mockAnimals);
   });
 
-  it('should delete an animal', () => {
-    const mockAnimals = [
-      { id: '1', species: 'Cachorro', name: 'Rex', gender: 'M', birthDate: '2020-01-01', adopter: 'João', institution: 'PetPar' }
-    ];
-    animalService.getAnimals.and.returnValue(of(mockAnimals));
-    animalService.deleteAnimal.and.returnValue(of({}));
+  it('should reprove adoption', () => {
+    spyOn(window, 'confirm').and.returnValue(true);
+    const mockAnimalId = 1;
+    animalService.reproveAdoption.and.returnValue(of({}));
 
-    component.ngOnInit();
-    component.deleteAnimal('1');  // Passando o id como string
-    fixture.detectChanges();
-
-    expect(animalService.deleteAnimal).toHaveBeenCalledWith('1'); // Passando o id como string
+    component.reproveAdoption(mockAnimalId);
+    expect(animalService.reproveAdoption).toHaveBeenCalledWith(mockAnimalId);
   });
 });
