@@ -37,7 +37,7 @@ export class InstitutionAnimalListComponent implements OnInit {
   saveApprovedAnimals() {
     localStorage.setItem('approvedAnimals', JSON.stringify(Array.from(this.approvedAnimals)));
   }
-  
+
   loadApprovedAnimals() {
     const storedAnimals = localStorage.getItem('approvedAnimals');
     if (storedAnimals) {
@@ -156,7 +156,7 @@ export class InstitutionAnimalListComponent implements OnInit {
       if (confirm("Tem certeza que deseja reprovar esta adoção?")) {
         this.animalService.reproveAdoption(animalId).subscribe({
           next: () => {
-            alert("Adoção reprovada com sucesso!");
+            alert("Adoção negada com sucesso!");
             this.loadAnimals();
           },
           error: (err) => {
@@ -166,4 +166,8 @@ export class InstitutionAnimalListComponent implements OnInit {
         });
       }
     }
+  showAdoptedAlert(): void {
+    alert("Animal adotado. Entre em contato com o adotante para acompanhar o processo de adaptação.");
+  }
+
 }
