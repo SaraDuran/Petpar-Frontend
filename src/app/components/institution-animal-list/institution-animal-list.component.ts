@@ -57,6 +57,7 @@ export class InstitutionAnimalListComponent implements OnInit {
           this.userService.getById(animal.user_id).subscribe({
             next: (data) => {
               animal.user_name = data.name;
+              animal.user_phone = data.phone_number;
               console.log("Animal carregado com sucesso:", data);
             },
             error: (err) => {

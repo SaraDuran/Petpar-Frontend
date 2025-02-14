@@ -66,6 +66,7 @@ export class UserAnimalAdoptListComponent implements OnInit {
               this.institutionService.getById(animal.institution_id).subscribe({
                 next: (data) => {
                   animal.institution_name = data.name;
+                  animal.institution_phone = data.phone_number;
                   console.log("Animal carregado com sucesso:", data);
                 },
                 error: (err) => {

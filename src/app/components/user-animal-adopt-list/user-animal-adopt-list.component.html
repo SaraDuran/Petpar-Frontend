@@ -56,8 +56,9 @@
             <th>Nome</th>
             <th>Gênero</th>
             <th>Data de Nascimento</th>
-<!--            <th>Adotante</th>-->
+            <th>Adotante</th>
             <th>Instituição</th>
+            <th>Telefone Instituição</th>
             <th>Ações</th>
           </tr>
           <tr *ngFor="let animal of filteredAnimals; let i = index">
@@ -66,8 +67,9 @@
             <td>{{ animal.name }}</td>
             <td>{{ animal.gender }}</td>
             <td>{{ animal.birth_date | date:'dd/MM/yyyy' }}</td>
-<!--            <td>{{ animal.user_id }}</td>-->
+            <td>{{ animal.user_id }}</td>
             <td>{{ animal.institution_name }}</td>
+            <td>{{ animal.institution_phone }}</td>
             <td>
               <button *ngIf="animal.user_id && animal.status_adoption !== 'DONE'" class="btn btn-primary" (click)="reproveAdoption(animal.id)">
                 Parar Adoção
