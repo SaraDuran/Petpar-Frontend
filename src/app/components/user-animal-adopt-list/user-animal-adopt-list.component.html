@@ -69,7 +69,8 @@
             <td>{{ animal.birth_date | date:'dd/MM/yyyy' }}</td>
             <td>{{ animal.user_id }}</td>
             <td>{{ animal.institution_name }}</td>
-            <td>{{ animal.institution_phone }}</td>
+            <td>{{ animal.institution_phone | slice:0:2 }} {{ animal.institution_phone | slice:2:7 }}-{{ animal.institution_phone | slice:7 }}</td>
+<!--            <td>{{ animal.institution_phone }}</td>-->
             <td>
               <button *ngIf="animal.user_id && animal.status_adoption !== 'DONE'" class="btn btn-primary" (click)="reproveAdoption(animal.id)">
                 Parar Adoção
