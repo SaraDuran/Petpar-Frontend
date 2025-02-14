@@ -56,7 +56,6 @@
             <th>Nome</th>
             <th>Gênero</th>
             <th>Data de Nascimento</th>
-            <th>Localização</th>
             <th>Ações</th>
           </tr>
           <tr *ngFor="let animal of filteredAnimals; let i = index">
@@ -65,7 +64,6 @@
             <td>{{ animal.name }}</td>
             <td>{{ animal.gender }}</td>
             <td>{{ animal.birth_date | date:'dd/MM/yyyy' }}</td>
-            <td>{{ animal.location }}</td>
             <td>
               <button class="btn btn-primary" (click)="goToAnimalProfile(animal.id)">Ver</button>
               <button class="btn btn-sucess" (click)="requestAdoption(animal.id)">Adotar</button>
