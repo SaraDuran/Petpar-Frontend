@@ -79,13 +79,12 @@
             <td>{{ animal.birth_date | date:'dd/MM/yyyy' }}</td>
             <td>{{ animal.user_name }}</td>
             <td>{{ animal.institution_id }}</td>
-            <td>
+            <td *ngIf="!approvedAnimals.has(animal.id)">
               <button class="btn btn-primary" (click)="editAnimal(animal.id)">Editar</button>
               <button class="btn btn-primary" (click)="deleteAnimal(animal.id)">Deletar</button>
               <button *ngIf="animal.user_id" class="btn btn-success" (click)="approveAdoption(animal.id)">
                 Aprovar
               </button>
-
               <button *ngIf="animal.user_id" class="btn btn-success" (click)="reproveAdoption(animal.id)">
                 Reprovar
               </button>

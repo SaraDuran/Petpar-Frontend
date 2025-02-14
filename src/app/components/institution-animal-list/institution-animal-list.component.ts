@@ -24,12 +24,25 @@ export class InstitutionAnimalListComponent implements OnInit {
     endDate: ''
   };
   institutionId: number = 0;
+  approvedAnimals: Set<number> = new Set();
 
   constructor(private animalService: AnimalService,private userService: UserService, private http: HttpClient,private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit(): void {
     this.institutionId = this.route.snapshot.params[`id`];
+    this.loadApprovedAnimals();
     this.loadAnimals();
+  }
+
+  saveApprovedAnimals() {
+    localStorage.setItem('approvedAnimals', JSON.stringify(Array.from(this.approvedAnimals)));
+  }
+  
+  loadApprovedAnimals() {
+    const storedAnimals = localStorage.getItem('approvedAnimals');
+    if (storedAnimals) {
+      this.approvedAnimals = new Set(JSON.parse(storedAnimals));
+    }
   }
 
   loadAnimals(): void {
@@ -127,7 +140,9 @@ export class InstitutionAnimalListComponent implements OnInit {
       this.animalService.approveAdoption(animalId).subscribe({
         next: () => {
           alert("Adoção aprovada com sucesso!");
-          this.loadAnimals(); // Atualiza a lista de animais após aprovação
+          this.approvedAnimals.add(animalId);
+          this.saveApprovedAnimals(); // Salva no LocalStorage
+          this.loadAnimals(); // Atualiza a lista
         },
         error: (err) => {
           console.error("Erro ao aprovar adoção:", err);
